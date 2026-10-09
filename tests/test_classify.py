@@ -45,7 +45,9 @@ class Classify(unittest.TestCase):
         fake.chmod(fake.stat().st_mode | stat.S_IEXEC)
         self.log = self.dir / "calls.jsonl"
         write(self.dir / "prs.json", [make_pr(n, author="octocat", title=f"Change {n} by octocat") for n in (30, 31, 32)])
-        self.env = {"PATH": str(self.dir / "bin") + os.pathsep + os.environ.get("PATH", ""), "FAKE_LOG": str(self.log)}
+        # путь к заглушке задан явно: настоящий claude, даже если он есть в PATH, не запустится
+        self.env = {"PATH": str(self.dir / "bin") + os.pathsep + os.environ.get("PATH", ""), "FAKE_LOG": str(self.log),
+                    "SCORER_CLAUDE_BIN": str(fake)}
 
     def tearDown(self):
         shutil.rmtree(self.dir, True)

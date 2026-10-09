@@ -74,7 +74,7 @@ a.strong:hover { color: var(--link); }
 
 /* ---------- шапка ---------- */
 .topbar { background: var(--surface); border-bottom: 1px solid var(--rule); position: sticky; top: 0; z-index: 20; }
-.topbar-in { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; align-items: stretch; gap: 28px; min-height: 56px; }
+.topbar-in { max-width: 1280px; margin: 0 auto; padding: 0 24px; display: flex; align-items: stretch; gap: 28px; min-height: 56px; }
 .brand { display: flex; align-items: baseline; gap: 10px; align-self: center; color: var(--ink); white-space: nowrap; }
 .brand:hover { text-decoration: none; }
 .brand-name { font-weight: 700; font-size: 16px; letter-spacing: -.01em; }
@@ -97,8 +97,8 @@ a.strong:hover { color: var(--link); }
 .lang button:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
 .stub-banner { background: var(--marker-soft); border-bottom: 1px solid var(--rule); padding: 9px 24px; text-align: center; font-size: 14px; }
 
-main { max-width: 1200px; margin: 0 auto; padding: 36px 24px 56px; outline: none; }
-.foot { max-width: 1200px; margin: 0 auto; padding: 20px 24px 40px; color: var(--muted); font-size: 13px; border-top: 1px solid var(--rule); }
+main { max-width: 1280px; margin: 0 auto; padding: 36px 24px 56px; outline: none; }
+.foot { max-width: 1280px; margin: 0 auto; padding: 20px 24px 40px; color: var(--muted); font-size: 13px; border-top: 1px solid var(--rule); }
 
 /* ---------- заголовок страницы ---------- */
 .page-head { margin-bottom: 28px; }
@@ -129,11 +129,11 @@ main { max-width: 1200px; margin: 0 auto; padding: 36px 24px 56px; outline: none
 .table-wrap { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; overflow-x: auto; }
 .table-wrap.narrow { max-width: 760px; }
 table.grid { width: 100%; border-collapse: collapse; font-size: 14px; }
-.grid th, .grid td { padding: 10px 14px; text-align: left; border-top: 1px solid var(--rule); vertical-align: middle; }
+.grid th, .grid td { padding: 10px 12px; text-align: left; border-top: 1px solid var(--rule); vertical-align: middle; }
 .grid thead th { border-top: 0; font-weight: 600; color: var(--ink-2); font-size: 13px; white-space: nowrap; padding: 0; }
-.grid.plain thead th { padding: 10px 14px; }
+.grid.plain thead th { padding: 10px 12px; }
 .grid .r { text-align: right; font-variant-numeric: tabular-nums; }
-.th-btn { all: unset; display: block; width: 100%; box-sizing: border-box; padding: 10px 14px; cursor: pointer; font-weight: 600; }
+.th-btn { all: unset; display: block; width: 100%; box-sizing: border-box; padding: 10px 12px; cursor: pointer; font-weight: 600; }
 .r .th-btn { text-align: right; }
 .th-btn:hover { color: var(--ink); }
 .th-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
@@ -141,6 +141,8 @@ table.grid { width: 100%; border-collapse: collapse; font-size: 14px; }
 .grid tbody tr.go { cursor: pointer; }
 .grid tbody tr.go:hover { background: color-mix(in srgb, var(--accent) 6%, transparent); }
 .title-cell { display: flex; flex-wrap: wrap; gap: 4px 8px; align-items: center; min-width: 220px; max-width: 420px; }
+/* Длинное имя вроде `TypeAdapter.json_schemas()` переносится, а не раздвигает таблицу шире страницы. */
+.title-cell > a, .title-cell > strong { overflow-wrap: anywhere; }
 .mult-cell { display: inline-flex; align-items: center; gap: 12px; justify-content: flex-end; }
 .mult-num { min-width: 36px; text-align: right; }
 .legend { display: flex; align-items: center; gap: 12px; color: var(--muted); font-size: 13px; margin-top: 10px; }
@@ -405,7 +407,7 @@ dialog::backdrop { background: rgba(15, 18, 23, .5); }
     <label class="drop" id="drop-zone">
       <input type="file" id="file-input" accept=".json,application/json" multiple>
       <span class="drop-title" data-i18n="dialog.drop">Выбрать файлы JSON</span>
-      <span class="drop-hint">prs, scores, metrics, outcomes, validation, run_stats, author_history, levels</span>
+      <span class="drop-hint">prs, scores, metrics, outcomes, validation, run_stats, author_history, change_types, levels</span>
     </label>
     <ul class="file-list" id="file-list"></ul>
     <p class="dialog-note" data-i18n="dialog.note"></p>
@@ -490,7 +492,7 @@ window.I18N = {
     "pr.evidence.clarity": "Оценка относится к заголовку и описанию, а не к коду.", "pr.evidence.none": "Модель не указала конкретных строк.", "pr.lines.label": "строки {lines}",
     "note.title": "Контекст от автора", "note.lead": "То, чего не видно в коде. Модель этот текст не читает; он остаётся для разговора с руководителем.",
     "note.aria": "Контекст к этому PR", "note.placeholder": "Например: три дня ушло на поиск причины, сама правка в одну строку.",
-    "note.saved.browser": "Сохранено в этом браузере", "note.saved.file": "Сохранено в файле notes.json", "note.saving": "Сохраняю…", "note.fail": "Не удалось сохранить",
+    "note.saved.browser": "Сохранено в этом браузере", "note.saved.file": "Сохранено в файле notes.json", "note.saving": "Сохраняю…", "note.fail": "Не удалось сохранить", "note.stale": "Не сохранено: страница устарела после перезапуска приложения. Обновите её (F5) и повторите.",
     "pr.body": "Описание PR", "pr.body.none": "Автор не оставил описания.", "pr.reviews": "Ревью до мержа: {n}", "rv.APPROVED": "одобрено", "rv.CHANGES_REQUESTED": "нужны правки", "rv.COMMENTED": "комментарий",
     "pr.files": "Файлы: {n}", "pr.file.partial": " показан частично", "pr.file.hidden": " слишком большой, модель его не видела", "pr.files.more": "и ещё {n}",
     "pr.noise": "Не оценивались как шум (lock-файлы, сборка, картинки): {n}.",
@@ -501,7 +503,7 @@ window.I18N = {
     "check.chart.note": "По группам балла риска. В расчёте {n} PR, проблемных {k}. Тонкий отрезок показывает 95%-й интервал.", "check.as.table": "Показать таблицей", "check.as.chart": "Показать график",
     "check.auc": "**Различает проблемные PR: {v}** (интервал {lo}–{hi}). Это вероятность, что у случайного проблемного PR балл риска выше, чем у случайного чистого: {half} значит наугад, 1 значит безошибочно.",
     "check.size.better": "**Простой размер PR даёт {v}** ({lo}–{hi}). Балл модели различает лучше, чем число строк.",
-    "check.size.worse": "**Простой размер PR даёт {v}** ({lo}–{hi}). Балл модели не лучше числа строк: модель пока ничего не добавляет к размеру PR.",
+    "check.size.worse": "**Простой размер PR даёт {v}** ({lo}–{hi}). Балл модели не лучше числа строк: модель пока ничего не добавляет к размеру PR.", "check.size.unclear": "**Простой размер PR даёт {v}** ({lo}–{hi}). Интервалы пересекаются: по этим данным нельзя сказать, различает ли балл модели лучше, чем число строк.",
     "check.excluded": "Не учтено PR: {n}. После мержа прошло слишком мало времени.", "check.strict": "По строгому правилу (откат или исправление с прямой ссылкой на причину) проблемных {k}, показатель {v}.",
     "check.risk.none": "Не посчитано: нет `outcomes.json`. Запустите `python outcomes.py` и `python validate.py`.",
     "check.human": "Человек против модели", "check.human.verdict": "**{pct} оценок совпали в пределах одного балла.** Вручную оценено PR: {prs}, всего оценок: {n}; точное совпадение {exact}.",
@@ -598,7 +600,7 @@ window.I18N = {
     "pr.evidence.clarity": "Qiymət koda yox, başlıq və təsvirə aiddir.", "pr.evidence.none": "Model konkret sətirlər göstərməyib.", "pr.lines.label": "sətirlər {lines}",
     "note.title": "Müəllifin konteksti", "note.lead": "Kodda görünməyən məqamlar. Model bu mətni oxumur; o, rəhbərlə söhbət üçün qalır.",
     "note.aria": "Bu PR üçün kontekst", "note.placeholder": "Məsələn: səbəbin axtarışına üç gün getdi, düzəlişin özü isə bir sətirdir.",
-    "note.saved.browser": "Bu brauzerdə yadda saxlanıldı", "note.saved.file": "notes.json faylında yadda saxlanıldı", "note.saving": "Yadda saxlanılır…", "note.fail": "Yadda saxlamaq alınmadı",
+    "note.saved.browser": "Bu brauzerdə yadda saxlanıldı", "note.saved.file": "notes.json faylında yadda saxlanıldı", "note.saving": "Yadda saxlanılır…", "note.fail": "Yadda saxlamaq alınmadı", "note.stale": "Yadda saxlanmadı: tətbiq yenidən başladıldığı üçün səhifə köhnəlib. Səhifəni yeniləyin (F5) və təkrar edin.",
     "pr.body": "PR təsviri", "pr.body.none": "Müəllif təsvir yazmayıb.", "pr.reviews": "Merge-dən əvvəlki rəylər: {n}", "rv.APPROVED": "təsdiqlənib", "rv.CHANGES_REQUESTED": "düzəliş tələb olunur", "rv.COMMENTED": "şərh",
     "pr.files": "Fayllar: {n}", "pr.file.partial": " qismən göstərilib", "pr.file.hidden": " çox böyükdür, model onu görməyib", "pr.files.more": "və daha {n}",
     "pr.noise": "Səs-küy kimi qiymətləndirilməyib (lock faylları, yığma, şəkillər): {n}.",
@@ -609,7 +611,7 @@ window.I18N = {
     "check.chart.note": "Risk balı qrupları üzrə. Hesabda {n} PR var, onlardan problemli: {k}. Nazik xətt 95% intervalı göstərir.", "check.as.table": "Cədvəl kimi göstər", "check.as.chart": "Qrafiki göstər",
     "check.auc": "**Problemli PR-ları fərqləndirmə: {v}** (interval {lo}–{hi}). Bu, təsadüfi problemli PR-ın risk balının təsadüfi təmiz PR-ınkından yüksək olması ehtimalıdır: {half} təsadüfi tapmaq, 1 isə səhvsiz deməkdir.",
     "check.size.better": "**PR-ın sadəcə ölçüsü {v} verir** ({lo}–{hi}). Modelin balı sətir sayından daha yaxşı fərqləndirir.",
-    "check.size.worse": "**PR-ın sadəcə ölçüsü {v} verir** ({lo}–{hi}). Modelin balı sətir sayından yaxşı deyil: model hələlik PR ölçüsünə heç nə əlavə etmir.",
+    "check.size.worse": "**PR-ın sadəcə ölçüsü {v} verir** ({lo}–{hi}). Modelin balı sətir sayından yaxşı deyil: model hələlik PR ölçüsünə heç nə əlavə etmir.", "check.size.unclear": "**PR-ın sadəcə ölçüsü {v} verir** ({lo}–{hi}). İntervallar üst-üstə düşür: bu məlumatlarla modelin balının sətir sayından daha yaxşı fərqləndirib-fərqləndirmədiyini demək olmaz.",
     "check.excluded": "Nəzərə alınmayan PR: {n}. Merge-dən çox az vaxt keçib.", "check.strict": "Sərt qaydaya görə (geri qaytarma və ya səbəbə birbaşa istinad edən düzəliş) problemli PR: {k}, göstərici {v}.",
     "check.risk.none": "Hesablanmayıb: `outcomes.json` yoxdur. `python outcomes.py` və `python validate.py` işə salın.",
     "check.human": "İnsan və model", "check.human.verdict": "**Qiymətlərin {pct} hissəsi bir bal daxilində üst-üstə düşüb.** Əl ilə qiymətləndirilmiş PR: {prs}, cəmi qiymət: {n}; tam üst-üstə düşmə {exact}.",
@@ -706,7 +708,7 @@ window.I18N = {
     "pr.evidence.clarity": "This score is about the title and description, not the code.", "pr.evidence.none": "The model did not point to specific lines.", "pr.lines.label": "lines {lines}",
     "note.title": "Context from the author", "note.lead": "What the code does not show. The model does not read this text; it stays for the conversation with the manager.",
     "note.aria": "Context for this PR", "note.placeholder": "For example: finding the cause took three days, the fix itself is one line.",
-    "note.saved.browser": "Saved in this browser", "note.saved.file": "Saved to notes.json", "note.saving": "Saving…", "note.fail": "Could not save",
+    "note.saved.browser": "Saved in this browser", "note.saved.file": "Saved to notes.json", "note.saving": "Saving…", "note.fail": "Could not save", "note.stale": "Not saved: the page is out of date after the app was restarted. Reload it (F5) and try again.",
     "pr.body": "PR description", "pr.body.none": "The author left no description.", "pr.reviews": "Reviews before the merge: {n}", "rv.APPROVED": "approved", "rv.CHANGES_REQUESTED": "changes requested", "rv.COMMENTED": "comment",
     "pr.files": "Files: {n}", "pr.file.partial": " shown in part", "pr.file.hidden": " too large, the model did not see it", "pr.files.more": "and {n} more",
     "pr.noise": "Left out as noise (lock files, build output, images): {n}.",
@@ -717,7 +719,7 @@ window.I18N = {
     "check.chart.note": "By risk-score group. {n} PRs counted, {k} of them problem PRs. The thin line shows the 95% interval.", "check.as.table": "Show as a table", "check.as.chart": "Show the chart",
     "check.auc": "**Telling problem PRs apart: {v}** (interval {lo}–{hi}). This is the chance that a random problem PR has a higher risk score than a random clean one: {half} means guessing, 1 means never wrong.",
     "check.size.better": "**Plain PR size gives {v}** ({lo}–{hi}). The model's score separates them better than the line count does.",
-    "check.size.worse": "**Plain PR size gives {v}** ({lo}–{hi}). The model's score is no better than the line count: so far the model adds nothing to PR size.",
+    "check.size.worse": "**Plain PR size gives {v}** ({lo}–{hi}). The model's score is no better than the line count: so far the model adds nothing to PR size.", "check.size.unclear": "**Plain PR size gives {v}** ({lo}–{hi}). The intervals overlap: these data cannot tell whether the model's score separates them better than the line count.",
     "check.excluded": "PRs left out: {n}. Too little time has passed since the merge.", "check.strict": "Under the strict rule (a revert, or a fix that names the cause directly) there are {k} problem PRs and the measure is {v}.",
     "check.risk.none": "Not calculated: there is no `outcomes.json`. Run `python outcomes.py` and `python validate.py`.",
     "check.human": "Person against model", "check.human.verdict": "**{pct} of the scores agreed within one point.** PRs scored by hand: {prs}; scores in total: {n}; exact agreement {exact}.",
@@ -1148,7 +1150,7 @@ window.DASHBOARD_DATA = {"prs":[{"number":13954,"title":"Fix `arguments-v3` sche
       D.hasTypes ? { key: "type", label: tr("col.type"), title: tr("col.type.title"),
         value: (d) => { const top = typeCounts(D.byAuthor.get(d.author) || [])[0]; return top ? TYPES.indexOf(top[0]) : null; },
         cell: (d) => { const items = D.byAuthor.get(d.author) || [], top = typeCounts(items)[0];
-          return top ? h("span", { class: "nowrap" }, badge(typeName(top[0]), "type"), h("span", { class: "dim" }, pct(top[1] / items.filter((r) => r.type).length))) : "—"; } } : null,
+          return top ? h("span", null, badge(typeName(top[0]), "type"), h("span", { class: "dim" }, pct(top[1] / items.filter((r) => r.type).length))) : "—"; } } : null,
       { key: "flags", label: tr("col.flags"), value: (d) => (d.flags || []).length, cell: (d) => flagBadges(d.flags) },
     ].filter(Boolean);
     const attention = rows.filter((r) => (r.out && r.out.problem) || r.sc.risk >= 4).slice(0, 7);
@@ -1294,7 +1296,8 @@ window.DASHBOARD_DATA = {"prs":[{"number":13954,"title":"Fix `arguments-v3` sche
     else try { saved = localStorage.getItem(key) || ""; } catch (e) { /* хранилище недоступно: поле просто не запоминает */ }
     const send = (text) => fetch("/api/note", { method: "POST", headers: { "Content-Type": "application/json", "X-Dashboard-Token": API.token },
       body: JSON.stringify({ number: r.n, text }) })
-      .then((res) => { status.textContent = tr(res.ok ? "note.saved.file" : "note.fail"); if (res.ok) notes[String(r.n)] = text; })
+      // 403: сервер перезапускали, у страницы старый ключ. Обычное «не удалось» тут не подсказывает, что делать.
+      .then((res) => { status.textContent = tr(res.ok ? "note.saved.file" : res.status === 403 ? "note.stale" : "note.fail"); if (res.ok) notes[String(r.n)] = text; })
       .catch(() => { status.textContent = tr("note.fail"); });
     const box = h("textarea", { rows: "4", maxlength: "4000", "aria-label": tr("note.aria"), placeholder: tr("note.placeholder"), oninput: (e) => {
       const text = e.target.value;
@@ -1344,9 +1347,11 @@ window.DASHBOARD_DATA = {"prs":[{"number":13954,"title":"Fix `arguments-v3` sche
     });
 
     const reviews = (pr.reviews || []).filter((rv) => rv.body || rv.state !== "COMMENTED");
+    // HTML-комментарии шаблона PR (<!-- Thank you for your contribution -->) GitHub не показывает: здесь тоже.
+    const body = String(pr.body || "").replace(/<!--[\s\S]*?(?:-->|$)/g, "").replace(/\n{3,}/g, "\n\n").trim();
     const aside = h("aside", { class: "pr-aside" },
       section(tr("note.title"), h("p", { class: "note" }, tr("note.lead")), noteField(r)),
-      section(tr("pr.body"), pr.body ? h("div", { class: "body-text" }, pr.body) : h("p", { class: "note" }, tr("pr.body.none"))),
+      section(tr("pr.body"), body ? h("div", { class: "body-text" }, body) : h("p", { class: "note" }, tr("pr.body.none"))),
       reviews.length ? section(tr("pr.reviews", { n: reviews.length }), h("ul", { class: "reviews" }, reviews.slice(0, 8).map((rv) => h("li", null,
         badge(("rv." + rv.state) in L ? tr("rv." + rv.state) : rv.state, rv.state === "CHANGES_REQUESTED" ? "warn" : ""), rv.body ? h("span", null, rv.body) : null)))) : null,
       section(tr("pr.files", { n: files.length }), h("ul", { class: "files" }, files.slice(0, 30).map((f) => h("li", null, h("code", null, f.path),
@@ -1371,12 +1376,16 @@ window.DASHBOARD_DATA = {"prs":[{"number":13954,"title":"Fix `arguments-v3` sche
         view.replaceChildren(asTable ? riskTable(risk) : riskChart(risk));
       } }, tr("check.as.table"));
       const a = risk.auc_risk, sz = risk.auc_size, strict = v.risk_strict;
+      /* «Модель различает лучше размера» говорим, только когда сама связь риска с исходами подтверждена:
+         при двух проблемных PR интервалы широкие и пересекаются, и такое сравнение ничего не значит. */
+      const sizeKey = !a || !sz ? null : a.value <= sz.value ? "check.size.worse"
+        : risk.verdict === "supported" ? "check.size.better" : "check.size.unclear";
       out.push(section(tr("check.risk"), verdict(risk),
         h("div", { class: "chart-card" }, h("div", { class: "chart-head" }, h("div", null, h("h3", null, tr("check.chart")),
           h("p", { class: "note" }, tr("check.chart.note", { n: risk.prs_used, k: risk.problems }))), toggle), view),
         h("ul", { class: "plain-list" },
           a ? h("li", null, T("check.auc", { v: num(a.value), lo: num(a.ci95[0]), hi: num(a.ci95[1]), half: num(0.5, 1) })) : null,
-          sz ? h("li", null, T(a && a.value > sz.value ? "check.size.better" : "check.size.worse", { v: num(sz.value), lo: num(sz.ci95[0]), hi: num(sz.ci95[1]) })) : null,
+          sizeKey ? h("li", null, T(sizeKey, { v: num(sz.value), lo: num(sz.ci95[0]), hi: num(sz.ci95[1]) })) : null,
           risk.excluded_window_not_passed ? h("li", null, tr("check.excluded", { n: risk.excluded_window_not_passed })) : null,
           strict && strict.problems !== risk.problems && strict.auc_risk ? h("li", null, tr("check.strict", { k: strict.problems, v: num(strict.auc_risk.value) })) : null)));
     } else out.push(section(tr("check.risk"), hint(T("check.risk.none"))));
@@ -1449,7 +1458,9 @@ window.DASHBOARD_DATA = {"prs":[{"number":13954,"title":"Fix `arguments-v3` sche
     ];
   }
   function render(keepScroll) {
-    const main = $("main"), parts = decodeURIComponent(location.hash.replace(/^#\/?/, "")).split("/");
+    let address = location.hash.replace(/^#\/?/, "");
+    try { address = decodeURIComponent(address); } catch (e) { /* битая ссылка вида #/dev/%E0%A4: не падаем, а покажем «не найдено» */ }
+    const main = $("main"), parts = address.split("/");
     const route = parts[0] || "team";
     let view, tab = route;
     if (D.waiting) { view = viewWaiting(); tab = ""; }

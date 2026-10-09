@@ -201,6 +201,18 @@ class Reports(unittest.TestCase):
         self.assertEqual(status, 404)
         self.assertFalse(body["ok"])
 
+    def test_login_is_case_insensitive_like_on_github(self):
+        status, body = self.get("/api/reports/employees/ANN")
+        self.assertEqual(status, 200)
+        self.assertEqual(body["employee_id"], "ann")
+        self.assertEqual(body["multiplier"], 1.03)
+
+    def test_bad_period_is_400_not_an_empty_report(self):
+        for query in ("since=2026-5-1", "until=yesterday", "since=2026-06-01&until=2026-05-01"):
+            status, body = self.get("/api/reports/team?" + query)
+            self.assertEqual(status, 400, query)
+            self.assertFalse(body["ok"])
+
 
 if __name__ == "__main__":
     unittest.main()

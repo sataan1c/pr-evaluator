@@ -125,7 +125,7 @@ def main():
     except DataProblem as e:
         sys.exit(f"ОШИБКА: {e}")
     Path(args.out).write_text(script, encoding="utf-8")
-    have = [k for k in ("metrics", "outcomes", "validation", "run_stats", "history", "config") if k in data]
+    have = [k for k in ("metrics", "outcomes", "validation", "run_stats", "history", "types", "config") if k in data]
     missing = [OPTIONAL.get(k, "config/levels.json") for k in ("metrics", "outcomes", "validation") if k not in data]
     print(f"Данные -> {args.out}: {len(data['prs'])} PR, {len(data['scores'])} оценок, {len(script) // 1024} КБ")
     print("  найдено: " + (", ".join(have) or "только PR и оценки"))

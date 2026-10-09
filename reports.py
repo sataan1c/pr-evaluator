@@ -15,8 +15,26 @@ prs.json, scores.json, metrics.json из папки с результатами.
 from __future__ import annotations
 
 import statistics
+from datetime import date
 
 CRITERIA = ["complexity", "quality", "risk", "clarity"]
+
+
+def period_problem(since: str, until: str) -> str | None:
+    """Почему период задан неверно, или None. Даты сравниваются как строки, поэтому формат должен быть
+    строго ГГГГ-ММ-ДД: «2026-8-1» иначе молча дал бы пустой отчёт вместо ошибки."""
+    for name, value in (("since", since), ("until", until)):
+        if not value:
+            continue
+        try:
+            if len(value) != 10:
+                raise ValueError
+            date.fromisoformat(value)
+        except ValueError:
+            return f"{name} must be a date in the form YYYY-MM-DD, got {value!r}"
+    if since and until and since > until:
+        return f"since ({since}) is later than until ({until})"
+    return None
 
 
 def _in_period(pr: dict, since: str, until: str) -> bool:
@@ -70,9 +88,11 @@ def _pr_url(repo: str, number) -> str:
 
 def employee_report(data: dict, employee_id: str, since: str = "", until: str = "") -> dict | None:
     team = _scored_prs(data, since, until)
-    mine = [p for p in team if p["author"] == employee_id]
+    # Логины GitHub не различают регистр: /employees/viicos и /employees/Viicos — один человек.
+    mine = [p for p in team if str(p["author"]).lower() == str(employee_id).lower()]
     if not mine:
         return None
+    employee_id = mine[0]["author"]
     metric = next((m for m in data.get("metrics") or [] if m.get("author") == employee_id), None) or {}
     mine_med, team_med = _medians(mine), _medians(team)
     level = metric.get("level")

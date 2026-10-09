@@ -46,6 +46,9 @@ def run_script(script, args=(), cwd=None, env=None, timeout=120):
     for key in list(full_env):   # настройки с этого компьютера не должны попасть в тест
         if key.startswith(("SCORER_", "GITHUB_", "FETCH_")) or key in ("GEMINI_API_KEY", "ANTHROPIC_API_KEY", "OPENAI_API_KEY"):
             del full_env[key]
+    # .env в корне проекта хранит настройки этого компьютера (например SCORER_PROVIDER=claude-cli):
+    # скрипты в тесте его не читают, иначе вместо заглушки позвали бы настоящую модель.
+    full_env["SCORER_IGNORE_PROJECT_ENV"] = "1"
     full_env.update(env or {})
     done = subprocess.run([sys.executable, str(ROOT / script)] + [str(a) for a in args], cwd=str(cwd) if cwd else None,
                           env=full_env, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=timeout, stdin=subprocess.DEVNULL)

@@ -56,6 +56,7 @@ What it guarantees
 from __future__ import annotations
 
 import argparse
+import atexit
 import getpass
 import hashlib
 import http.client
@@ -599,6 +600,7 @@ class ClaudeCLIModel(Model):
         super().__init__(cfg)
         self.command = claude_command()
         self.workdir = tempfile.mkdtemp(prefix="pr-scorer-claude-")
+        atexit.register(shutil.rmtree, self.workdir, True)   # пустая папка на каждый запуск не копится во временных
         self.list_price_usd = 0.0   # what the same requests would cost on the API; the subscription does not bill it
 
     def _conversation(self, messages):
@@ -815,7 +817,12 @@ def combine(number, answers):
 # --------------------------------------------------------------------------
 
 def load_env_file():
-    for folder in dict.fromkeys((HERE, Path.cwd())):
+    # Тесты ставят SCORER_IGNORE_PROJECT_ENV=1: настройки этого компьютера (.env рядом со скриптами,
+    # например SCORER_PROVIDER=claude-cli) не должны попасть в тест и включить настоящую модель.
+    skip_home = os.environ.get("SCORER_IGNORE_PROJECT_ENV") == "1"
+    for folder in dict.fromkeys((HERE, Path.cwd().resolve())):
+        if skip_home and folder == HERE:
+            continue
         path = folder / ".env"
         if not path.is_file():
             continue
@@ -952,6 +959,54 @@ def print_results(records, prs, count=3):
             print(f"  {c:<10} {item['score']}  {item['reason']}{where}")
 
 
+def keep_other_scores(cfg, records, stats, input_order, attempted):
+    """--limit and --only score part of the input. Without this, scores.json would then hold only that
+    part and a full result scored earlier would be lost. PRs of the input that were not scored in this
+    launch keep their earlier record, but only if it came from the same prompt version and model:
+    scores of different prompts must not be mixed in one file. Updates stats in place."""
+    out, stats_path = Path(cfg.out), Path(cfg.stats)
+    if not out.is_file():
+        return records
+    try:
+        old_records = json.loads(out.read_text(encoding="utf-8-sig"))
+        old_stats = json.loads(stats_path.read_text(encoding="utf-8-sig")) if stats_path.is_file() else {}
+        if not isinstance(old_records, list) or not isinstance(old_stats, dict):
+            raise ValueError
+    except (OSError, ValueError):
+        return records
+    if old_stats.get("prompt_version") != stats["prompt_version"] or old_stats.get("model") != stats["model"]:
+        others = [r for r in old_records if isinstance(r, dict) and r.get("number") not in attempted]
+        if others:
+            print(f"note: {cfg.out} held {len(others)} more PR(s) scored with another prompt or model "
+                  f"({old_stats.get('prompt_version')}, {old_stats.get('model')}); they are replaced by this launch. "
+                  "Their runs stay in the cache.")
+        return records
+    fresh = {r["number"]: r for r in records}
+    wanted = set(input_order)
+    kept = {r["number"]: r for r in old_records
+            if isinstance(r, dict) and r.get("number") in wanted and r.get("number") not in attempted}
+    if not kept:
+        return records
+    merged = {**kept, **fresh}
+    position = {n: i for i, n in enumerate(input_order)}
+    result = sorted(merged.values(), key=lambda r: position.get(r["number"], len(position)))
+    old_per_pr = old_stats.get("per_pr") if isinstance(old_stats.get("per_pr"), dict) else {}
+    per_pr = {str(n): old_per_pr[str(n)] for n in kept if str(n) in old_per_pr}
+    per_pr.update(stats["per_pr"])
+    old_hidden = [n for n in old_stats.get("author_login_still_visible") or [] if n in kept]
+    stats.update({
+        "prs_in": len(input_order),
+        "prs_scored": len(result),
+        "kept_from_earlier_launch": len(kept),
+        "unstable": [r["number"] for r in result if r.get("unstable")],
+        "all_runs_identical": sum(1 for v in per_pr.values()
+                                  if all(len(set(runs)) == 1 for runs in (v.get("run_scores") or {}).values())),
+        "author_login_still_visible": sorted(set(old_hidden) | set(stats["author_login_still_visible"])),
+        "per_pr": {str(r["number"]): per_pr[str(r["number"])] for r in result if str(r["number"]) in per_pr},
+    })
+    return result
+
+
 # --------------------------------------------------------------------------
 # The launch itself
 # --------------------------------------------------------------------------
@@ -977,13 +1032,15 @@ def main():
     cfg.out = cfg.out or str(home / "scores.json")
     cfg.stats = cfg.stats or str(Path(cfg.out).parent / "run_stats.json")
     try:
-        prs = json.loads(prs_path.read_text(encoding="utf-8"))
-        rubric = re.sub(r"<!--.*?-->", "", Path(cfg.rubric).read_text(encoding="utf-8"), flags=re.S)
-        examples = json.loads(Path(cfg.examples).read_text(encoding="utf-8")) if cfg.examples else []
+        # utf-8-sig: файл, сохранённый Блокнотом Windows, начинается с BOM, и json без этого его не читает
+        prs = json.loads(prs_path.read_text(encoding="utf-8-sig"))
+        rubric = re.sub(r"<!--.*?-->", "", Path(cfg.rubric).read_text(encoding="utf-8-sig"), flags=re.S)
+        examples = json.loads(Path(cfg.examples).read_text(encoding="utf-8-sig")) if cfg.examples else []
     except (OSError, ValueError) as e:
         die(f"cannot read an input file: {e}")
     if not isinstance(prs, list) or not all(isinstance(pr, dict) and "number" in pr for pr in prs):
         die(f"{prs_path} must be a JSON list of PR records, each with a \"number\"")
+    input_order = [pr["number"] for pr in prs]      # весь входной файл: нужен, чтобы --limit/--only не стёр остальные оценки
     if cfg.only:
         wanted = {n.strip() for n in cfg.only.split(",")}
         prs = [pr for pr in prs if str(pr["number"]) in wanted]
@@ -1120,18 +1177,25 @@ def main():
         "seconds": round(time.time() - started, 1),
         "per_pr": {str(results[i][0]["number"]): {k: results[i][1][k] for k in ("run_scores", "run_errors")} for i in order},
     }
+    launched = records
+    if cfg.only or cfg.limit:
+        records = keep_other_scores(cfg, records, stats, input_order, attempted={pr["number"] for pr in prs})
     write_text_atomic(Path(cfg.out), json.dumps(records, ensure_ascii=False, indent=2))
     write_text_atomic(Path(cfg.stats), json.dumps(stats, ensure_ascii=False, indent=2))
 
-    print_results(records, prs)
+    print_results(launched, prs)
     cost = "set --price-in and --price-out to get the cost" if stats["cost_usd"] is None else f"${stats['cost_usd']:.2f}"
     if stats["api_list_price_usd"] is not None:
         cost = (f"none billed (Claude Code subscription); the same requests on the API would cost "
                 f"about ${stats['api_list_price_usd']:.2f}")
-    print(f"\nScored {len(records)} of {requested - duplicates} PRs -> {cfg.out}  (details in {cfg.stats})")
+    print(f"\nScored {len(launched)} of {requested - duplicates} PRs -> {cfg.out}  (details in {cfg.stats})")
+    if len(records) > len(launched):
+        print(f"{cfg.out} also keeps {len(records) - len(launched)} PR(s) scored earlier with the same prompt version, "
+              f"{len(records)} in total")
     print(f"Requests in this launch: {model.requests}; runs taken from the cache: {scorer.from_cache}")
     print(f"Answers rejected and retried: {scorer.retried}; evidence removed: {scorer.evidence_removed}; "
-          f"line numbers cleared: {scorer.evidence_lines_cleared}; unstable PRs: {len(stats['unstable'])}")
+          f"line numbers cleared: {scorer.evidence_lines_cleared}; "
+          f"unstable PRs: {sum(1 for r in launched if r['unstable'])}")
     if stats["author_login_still_visible"]:
         print("The author's login is still visible to the model (in a file path, or as an ordinary word in code) in: "
               + ", ".join("#" + str(n) for n in stats["author_login_still_visible"]))

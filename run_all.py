@@ -70,7 +70,10 @@ def model_key_is_set(work: Path) -> bool:
         return True
     if os.environ.get("SCORER_PROVIDER", "").strip().lower() == "claude-cli":   # подписка Claude Code: ключ не нужен
         return True
-    for folder in dict.fromkeys((HERE, work)):
+    skip_home = os.environ.get("SCORER_IGNORE_PROJECT_ENV") == "1"   # так делают тесты, см. score.load_env_file
+    for folder in dict.fromkeys((HERE, work.resolve())):
+        if skip_home and folder == HERE:
+            continue
         try:
             lines = (folder / ".env").read_text(encoding="utf-8").splitlines()
         except OSError:

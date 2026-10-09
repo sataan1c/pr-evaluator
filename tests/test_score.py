@@ -210,6 +210,22 @@ class AgainstALocalModelStub(unittest.TestCase):
         self.assertEqual(read(self.dir / "scores.json"), scores)
         self.assertEqual(read(self.dir / "run_stats.json")["runs_from_cache"], 18)
 
+    def test_partial_launch_keeps_the_other_scores(self):
+        self.start()
+        code, out = self.score("--runs", "1")
+        self.assertEqual(code, 0, out)
+        full = read(self.dir / "scores.json")
+        # «оцените пять PR и прочитайте глазами» после полного прогона не должно стирать остальные оценки
+        code, out = self.score("--runs", "1", "--limit", "2")
+        self.assertEqual(code, 0, out)
+        self.assertEqual(read(self.dir / "scores.json"), full)
+        stats = read(self.dir / "run_stats.json")
+        self.assertEqual(stats["prs_scored"], 6)
+        self.assertEqual(len(stats["per_pr"]), 6)
+        code, out = self.score("--runs", "1", "--only", "4")
+        self.assertEqual(code, 0, out)
+        self.assertEqual([r["number"] for r in read(self.dir / "scores.json")], [1, 2, 3, 4, 5, 6])
+
     def test_author_login_never_leaves_the_machine(self):
         fake = self.start()
         code, out = self.score("--runs", "1")

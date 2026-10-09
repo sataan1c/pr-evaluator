@@ -393,7 +393,7 @@
       D.hasTypes ? { key: "type", label: tr("col.type"), title: tr("col.type.title"),
         value: (d) => { const top = typeCounts(D.byAuthor.get(d.author) || [])[0]; return top ? TYPES.indexOf(top[0]) : null; },
         cell: (d) => { const items = D.byAuthor.get(d.author) || [], top = typeCounts(items)[0];
-          return top ? h("span", { class: "nowrap" }, badge(typeName(top[0]), "type"), h("span", { class: "dim" }, pct(top[1] / items.filter((r) => r.type).length))) : "—"; } } : null,
+          return top ? h("span", null, badge(typeName(top[0]), "type"), h("span", { class: "dim" }, pct(top[1] / items.filter((r) => r.type).length))) : "—"; } } : null,
       { key: "flags", label: tr("col.flags"), value: (d) => (d.flags || []).length, cell: (d) => flagBadges(d.flags) },
     ].filter(Boolean);
     const attention = rows.filter((r) => (r.out && r.out.problem) || r.sc.risk >= 4).slice(0, 7);
@@ -539,7 +539,8 @@
     else try { saved = localStorage.getItem(key) || ""; } catch (e) { /* хранилище недоступно: поле просто не запоминает */ }
     const send = (text) => fetch("/api/note", { method: "POST", headers: { "Content-Type": "application/json", "X-Dashboard-Token": API.token },
       body: JSON.stringify({ number: r.n, text }) })
-      .then((res) => { status.textContent = tr(res.ok ? "note.saved.file" : "note.fail"); if (res.ok) notes[String(r.n)] = text; })
+      // 403: сервер перезапускали, у страницы старый ключ. Обычное «не удалось» тут не подсказывает, что делать.
+      .then((res) => { status.textContent = tr(res.ok ? "note.saved.file" : res.status === 403 ? "note.stale" : "note.fail"); if (res.ok) notes[String(r.n)] = text; })
       .catch(() => { status.textContent = tr("note.fail"); });
     const box = h("textarea", { rows: "4", maxlength: "4000", "aria-label": tr("note.aria"), placeholder: tr("note.placeholder"), oninput: (e) => {
       const text = e.target.value;
@@ -589,9 +590,11 @@
     });
 
     const reviews = (pr.reviews || []).filter((rv) => rv.body || rv.state !== "COMMENTED");
+    // HTML-комментарии шаблона PR (<!-- Thank you for your contribution -->) GitHub не показывает: здесь тоже.
+    const body = String(pr.body || "").replace(/<!--[\s\S]*?(?:-->|$)/g, "").replace(/\n{3,}/g, "\n\n").trim();
     const aside = h("aside", { class: "pr-aside" },
       section(tr("note.title"), h("p", { class: "note" }, tr("note.lead")), noteField(r)),
-      section(tr("pr.body"), pr.body ? h("div", { class: "body-text" }, pr.body) : h("p", { class: "note" }, tr("pr.body.none"))),
+      section(tr("pr.body"), body ? h("div", { class: "body-text" }, body) : h("p", { class: "note" }, tr("pr.body.none"))),
       reviews.length ? section(tr("pr.reviews", { n: reviews.length }), h("ul", { class: "reviews" }, reviews.slice(0, 8).map((rv) => h("li", null,
         badge(("rv." + rv.state) in L ? tr("rv." + rv.state) : rv.state, rv.state === "CHANGES_REQUESTED" ? "warn" : ""), rv.body ? h("span", null, rv.body) : null)))) : null,
       section(tr("pr.files", { n: files.length }), h("ul", { class: "files" }, files.slice(0, 30).map((f) => h("li", null, h("code", null, f.path),
@@ -616,12 +619,16 @@
         view.replaceChildren(asTable ? riskTable(risk) : riskChart(risk));
       } }, tr("check.as.table"));
       const a = risk.auc_risk, sz = risk.auc_size, strict = v.risk_strict;
+      /* «Модель различает лучше размера» говорим, только когда сама связь риска с исходами подтверждена:
+         при двух проблемных PR интервалы широкие и пересекаются, и такое сравнение ничего не значит. */
+      const sizeKey = !a || !sz ? null : a.value <= sz.value ? "check.size.worse"
+        : risk.verdict === "supported" ? "check.size.better" : "check.size.unclear";
       out.push(section(tr("check.risk"), verdict(risk),
         h("div", { class: "chart-card" }, h("div", { class: "chart-head" }, h("div", null, h("h3", null, tr("check.chart")),
           h("p", { class: "note" }, tr("check.chart.note", { n: risk.prs_used, k: risk.problems }))), toggle), view),
         h("ul", { class: "plain-list" },
           a ? h("li", null, T("check.auc", { v: num(a.value), lo: num(a.ci95[0]), hi: num(a.ci95[1]), half: num(0.5, 1) })) : null,
-          sz ? h("li", null, T(a && a.value > sz.value ? "check.size.better" : "check.size.worse", { v: num(sz.value), lo: num(sz.ci95[0]), hi: num(sz.ci95[1]) })) : null,
+          sizeKey ? h("li", null, T(sizeKey, { v: num(sz.value), lo: num(sz.ci95[0]), hi: num(sz.ci95[1]) })) : null,
           risk.excluded_window_not_passed ? h("li", null, tr("check.excluded", { n: risk.excluded_window_not_passed })) : null,
           strict && strict.problems !== risk.problems && strict.auc_risk ? h("li", null, tr("check.strict", { k: strict.problems, v: num(strict.auc_risk.value) })) : null)));
     } else out.push(section(tr("check.risk"), hint(T("check.risk.none"))));
@@ -694,7 +701,9 @@
     ];
   }
   function render(keepScroll) {
-    const main = $("main"), parts = decodeURIComponent(location.hash.replace(/^#\/?/, "")).split("/");
+    let address = location.hash.replace(/^#\/?/, "");
+    try { address = decodeURIComponent(address); } catch (e) { /* битая ссылка вида #/dev/%E0%A4: не падаем, а покажем «не найдено» */ }
+    const main = $("main"), parts = address.split("/");
     const route = parts[0] || "team";
     let view, tab = route;
     if (D.waiting) { view = viewWaiting(); tab = ""; }

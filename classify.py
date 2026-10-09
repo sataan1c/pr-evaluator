@@ -188,7 +188,7 @@ def main() -> int:
     if not prs_path or not prs_path.is_file():
         score.die("no prs.json found; name it with --prs")
     out_path = Path(args.out) if args.out else prs_path.parent / "change_types.json"
-    prs = json.loads(prs_path.read_text(encoding="utf-8"))
+    prs = json.loads(prs_path.read_text(encoding="utf-8-sig"))
     if args.only:
         wanted = {n.strip() for n in args.only.split(",")}
         prs = [p for p in prs if str(p.get("number")) in wanted]
@@ -208,7 +208,7 @@ def main() -> int:
     known = {}
     if out_path.is_file():
         try:
-            known = {r["number"]: r for r in json.loads(out_path.read_text(encoding="utf-8")).get("prs", [])}
+            known = {r["number"]: r for r in json.loads(out_path.read_text(encoding="utf-8-sig")).get("prs", [])}
         except (ValueError, AttributeError, KeyError, TypeError):
             known = {}
 
@@ -242,8 +242,10 @@ def main() -> int:
     if fatal:
         score.die(fatal[0] + f"\n{out_path} не изменён; готовые ответы лежат в кэше.")
 
-    order = {p["number"]: i for i, p in enumerate(json.loads(prs_path.read_text(encoding="utf-8")))}
-    records = sorted(known.values(), key=lambda r: order.get(r["number"], 10 ** 9))
+    order = {p["number"]: i for i, p in enumerate(json.loads(prs_path.read_text(encoding="utf-8-sig")))}
+    # PR, которых больше нет в prs.json (после --update список сдвигается), из файла уходят:
+    # иначе change_types.json рос бы с каждым запуском, а check_data.py ругался бы на чужие номера.
+    records = sorted((r for r in known.values() if r["number"] in order), key=lambda r: order[r["number"]])
     result = {"model": cfg.model, "prompt_version": clf.version, "types": TYPES, "prs": records}
     score.write_text_atomic(out_path, json.dumps(result, ensure_ascii=False, indent=2))
 

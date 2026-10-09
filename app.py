@@ -149,6 +149,9 @@ def make_handler(folder: Path, token: str, lock: threading.Lock):
             """GET /api/reports/employees/{employeeId} и GET /api/reports/team, ?since=&until= по дате мержа."""
             query = {k: v[0] for k, v in parse_qs(urlparse(self.path).query).items()}
             since, until = query.get("since", ""), query.get("until", "")
+            problem = reports.period_problem(since, until)
+            if problem:
+                return self.fail(400, problem)
             try:
                 data = make_data.collect(folder, None)
             except make_data.DataProblem as e:

@@ -60,7 +60,8 @@ def main(limit: int = 70, workdir: str = "demo_out", runs: int = 3) -> int:
     env = dict(os.environ,
                GITHUB_API_URL=github_url, GITHUB_TOKEN="demo-token", FETCH_CACHE_DIR=str(out / "raw"), FETCH_SEARCH_PAUSE="0",
                SCORER_BASE_URL=llm_url, SCORER_MODEL="fake-llm", SCORER_API_KEY="local-demo-key", SCORER_PROVIDER="",
-               SCORER_PRICE_IN="", SCORER_PRICE_OUT="", SCORER_JSON_MODE="schema", PYTHONUTF8="1")
+               SCORER_PRICE_IN="", SCORER_PRICE_OUT="", SCORER_JSON_MODE="schema", PYTHONUTF8="1",
+               SCORER_IGNORE_PROJECT_ENV="1")   # настройки из .env проекта репетиции не нужны
     print(f"Репетиция: заглушка GitHub {github_url}, заглушка модели {llm_url}. В сеть ничего не уходит.\n", flush=True)
     try:
         base = [sys.executable, str(HERE / "run_all.py"), "--workdir", str(out), "--runs", str(runs), "--min-age-days", "7", "--no-app"]
