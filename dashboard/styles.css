@@ -196,6 +196,17 @@ table.grid { width: 100%; border-collapse: collapse; font-size: 14px; }
 .histo-axis { display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); padding: 0 4px; }
 .histo-axis b { font-weight: 400; }
 
+/* ---------- тип изменения ---------- */
+.badge.type { font-weight: 500; }
+.title-tags { display: block; margin-top: 3px; }
+.type-note { margin: 8px 0 0; color: var(--ink-2); max-width: 86ch; }
+.mix { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 8px 22px; }
+.mix-row { display: grid; grid-template-columns: minmax(130px, 200px) minmax(0, 1fr) minmax(88px, auto); gap: 16px; align-items: center; padding: 7px 0; }
+.mix-bar { height: 10px; background: var(--rule); border-radius: 5px; overflow: hidden; }
+.mix-bar i { display: block; height: 100%; background: var(--accent); border-radius: 5px; }
+.mix-num { color: var(--ink-2); font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
+@media (max-width: 560px) { .mix-row { grid-template-columns: minmax(0, 1fr) auto; } .mix-bar { grid-column: 1 / -1; grid-row: 2; } }
+
 /* ---------- список и фильтры PR ---------- */
 .filters { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 12px; margin-bottom: 14px; }
 .filters input[type="search"], .filters select { font: 14px var(--sans); color: var(--ink); background: var(--surface); border: 1px solid var(--rule-strong); border-radius: 7px; padding: 7px 10px; }

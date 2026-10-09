@@ -8,6 +8,7 @@
   const CRIT = ["complexity", "quality", "risk", "clarity"];
   const IN_MULTIPLIER = ["complexity", "quality", "clarity"];
   const LEVELS = ["junior", "middle", "senior"];
+  const TYPES = ["feature", "bugfix", "performance", "refactor", "docs", "tests", "build"];   // change_types.json, classify.py
   const LANGS = ["az", "ru", "en"];
   const I18N = window.I18N || {};
   const API = window.DASHBOARD_API || null;      // есть, когда страницу отдаёт app.py: заметки пишутся в файл
@@ -137,7 +138,7 @@
   const raw = Object.assign({}, window.DASHBOARD_DATA || {});
   const notes = Object.assign({}, raw.notes || {});
   const sortState = {};
-  const filters = { q: "", author: "", risk: "", problem: false, unstable: false };
+  const filters = { q: "", author: "", risk: "", type: "", problem: false, unstable: false };
 
   function build() {
     const prs = Array.isArray(raw.prs) ? raw.prs : [];
@@ -145,6 +146,8 @@
     const prBy = new Map(prs.map((p) => [p.number, p]));
     const outBy = new Map((Array.isArray(raw.outcomes) ? raw.outcomes : []).map((o) => [o.number, o]));
     const perPr = (raw.run_stats && raw.run_stats.per_pr) || {};
+    const typeBy = new Map(((raw.types && Array.isArray(raw.types.prs)) ? raw.types.prs : [])
+      .filter((t) => t && TYPES.includes(t.type)).map((t) => [t.number, t]));
     const rows = [];
     for (const sc of scores) {
       const pr = prBy.get(sc.number);
@@ -156,6 +159,7 @@
         add: pr.additions || 0, del: pr.deletions || 0, lines: (pr.additions || 0) + (pr.deletions || 0), ci: pr.ci || "unknown",
         sc: values, unstable: !!sc.unstable, runs: sc.runs || 1, summary: sc.summary || "", detail: sc.scores,
         runScores: (perPr[String(sc.number)] || {}).run_scores || null, out: outBy.get(sc.number) || null, pr,
+        type: (typeBy.get(sc.number) || {}).type || null, typeReason: (typeBy.get(sc.number) || {}).reason || "",
       });
     }
     rows.sort((a, b) => (a.merged < b.merged ? 1 : -1));
@@ -185,7 +189,7 @@
     D = {
       rows, rowBy, byAuthor, devs, devBy: new Map(devs.map((d) => [d.author, d])), derived, cfg, val, stats, model,
       repo: /^[\w.-]+\/[\w.-]+$/.test(repo) ? repo : "",
-      hasOutcomes: outBy.size > 0, history: (raw.history && raw.history.merged_before) || {},
+      hasOutcomes: outBy.size > 0, hasTypes: typeBy.size > 0, history: (raw.history && raw.history.merged_before) || {},
       synthetic: !!(val && val.synthetic) || String(model).startsWith("fake"),
       mult: cfg ? cfg.multiplier : { min: 0.9, max: 1.15, slope: 0.5 },
       ready: rows.length > 0, havePrs: prs.length > 0, haveScores: scores.length > 0,
@@ -230,6 +234,22 @@
     return tr(m >= 1.03 ? "mult.above" : m <= 0.97 ? "mult.below" : "mult.meets");
   }
   const badge = (text, kind, hint) => h("span", { class: "badge" + (kind ? " " + kind : ""), title: hint }, text);
+  const typeName = (t) => tr("type." + t);
+  const typeBadge = (r) => (r.type ? badge(typeName(r.type), "type", r.typeReason || tr("type." + r.type + ".long")) : null);
+  /* Разбивка PR по типу изменения: сколько и какая доля. Самый частый тип первым. */
+  function typeCounts(items) {
+    const counts = new Map();
+    for (const r of items) if (r.type) counts.set(r.type, (counts.get(r.type) || 0) + 1);
+    return [...counts.entries()].sort((a, b) => b[1] - a[1] || TYPES.indexOf(a[0]) - TYPES.indexOf(b[0]));
+  }
+  function typeMix(items) {
+    const counts = typeCounts(items), total = counts.reduce((sum, [, n]) => sum + n, 0);
+    if (!total) return hint(tr("dev.types.none"));
+    return h("div", { class: "mix", role: "list" }, counts.map(([t, n]) => h("div", { class: "mix-row", role: "listitem" },
+      h("span", { class: "mix-name", title: tr("type." + t + ".long") }, typeName(t)),
+      h("span", { class: "mix-bar", "aria-hidden": "true" }, h("i", { style: `width:${Math.max(2, (100 * n) / total)}%` })),
+      h("span", { class: "mix-num" }, tr("dev.types.count", { n, pct: pct(n / total) })))));
+  }
   function outcomeBadge(r) {
     const o = r.out;
     if (!o) return null;
@@ -370,8 +390,12 @@
         cell: (d) => (d.composite === null ? "—" : h("span", null, h("strong", null, num(d.composite)), h("span", { class: "dim" }, " " + tr("composite.at", { norm: num(d.norm) })))) },
       { key: "mult", label: tr("col.mult"), num: true, value: (d) => d.multiplier,
         cell: (d) => h("span", { class: "mult-cell" }, ruler(d.multiplier), h("strong", { class: "mult-num" }, d.multiplier === null ? "—" : num(d.multiplier))) },
+      D.hasTypes ? { key: "type", label: tr("col.type"), title: tr("col.type.title"),
+        value: (d) => { const top = typeCounts(D.byAuthor.get(d.author) || [])[0]; return top ? TYPES.indexOf(top[0]) : null; },
+        cell: (d) => { const items = D.byAuthor.get(d.author) || [], top = typeCounts(items)[0];
+          return top ? h("span", { class: "nowrap" }, badge(typeName(top[0]), "type"), h("span", { class: "dim" }, pct(top[1] / items.filter((r) => r.type).length))) : "—"; } } : null,
       { key: "flags", label: tr("col.flags"), value: (d) => (d.flags || []).length, cell: (d) => flagBadges(d.flags) },
-    ];
+    ].filter(Boolean);
     const attention = rows.filter((r) => (r.out && r.out.problem) || r.sc.risk >= 4).slice(0, 7);
     const risk = D.val && D.val.risk;
     return [
@@ -430,7 +454,8 @@
       histogram(items.map((r) => r.sc[c]), crit(c))))),
       h("p", { class: "note" }, tr("dev.profile.note")));
 
-    return [head, hero, how, flags, profile, section(tr("prs.title"), prTable("dev-prs", items, false))];
+    const types = D.hasTypes ? section(tr("dev.types"), typeMix(items), h("p", { class: "note" }, tr("dev.types.note"))) : null;
+    return [head, hero, how, flags, types, profile, section(tr("prs.title"), prTable("dev-prs", items, false))];
   }
 
   // ---------- таблица PR и её фильтры ----------
@@ -438,7 +463,8 @@
     const cols = [
       { key: "n", label: tr("prt.pr"), value: (r) => r.n, cell: (r) => h("span", { class: "dim" }, "#" + r.n) },
       { key: "title", label: tr("prt.title"), value: (r) => r.title.toLowerCase(),
-        cell: (r) => h("span", { class: "title-cell" }, link(prHref(r.n), title(r), "strong"), r.unstable ? badge(tr("prt.unstable"), "", tr("prt.unstable.title")) : null) },
+        cell: (r) => h("span", { class: "title-cell" }, link(prHref(r.n), title(r), "strong"),
+          r.type || r.unstable ? h("span", { class: "title-tags" }, typeBadge(r), r.unstable ? badge(tr("prt.unstable"), "", tr("prt.unstable.title")) : null) : null) },
       withAuthor ? { key: "author", label: tr("prt.author"), value: (r) => r.author.toLowerCase(), cell: (r) => link(devHref(r.author), r.author) } : null,
       { key: "merged", label: tr("prt.merged"), value: (r) => r.merged, cell: (r) => h("span", { class: "nowrap" }, date(r.merged)) },
       { key: "lines", label: tr("prt.lines"), num: true, value: (r) => r.lines, cell: (r) => h("span", { class: "nowrap" }, `+${r.add} −${r.del}`) },
@@ -452,6 +478,7 @@
     const authors = [...D.byAuthor.keys()].sort((a, b) => a.localeCompare(b));
     const apply = () => D.rows.filter((r) => (!filters.q || (r.title + " #" + r.n).toLowerCase().includes(filters.q.toLowerCase()))
       && (!filters.author || r.author === filters.author) && (!filters.risk || r.sc.risk >= +filters.risk)
+      && (!filters.type || r.type === filters.type)
       && (!filters.problem || (r.out && r.out.problem)) && (!filters.unstable || r.unstable));
     const out = h("div", null), count = h("p", { class: "count", "aria-live": "polite" });
     const refresh = () => {
@@ -464,9 +491,11 @@
       h("option", { value: "" }, tr("f.authors")), authors.map((a) => h("option", { value: a, selected: a === filters.author }, a)));
     const risk = h("select", { "aria-label": tr("f.risk.aria"), onchange: (e) => { filters.risk = e.target.value; refresh(); } },
       [["", tr("f.risk.any")], ["3", tr("f.risk.from", { v: 3 })], ["4", tr("f.risk.from", { v: 4 })], ["5", tr("f.risk.5")]].map(([v, text]) => h("option", { value: v, selected: v === filters.risk }, text)));
+    const typeSel = D.hasTypes ? h("select", { "aria-label": tr("f.type.aria"), onchange: (e) => { filters.type = e.target.value; refresh(); } },
+      h("option", { value: "" }, tr("f.types")), TYPES.map((t) => h("option", { value: t, selected: t === filters.type }, typeName(t)))) : null;
     const bar = h("div", { class: "filters" },
       h("input", { type: "search", placeholder: tr("f.search"), "aria-label": tr("f.search.aria"), value: filters.q, oninput: (e) => { filters.q = e.target.value; refresh(); } }),
-      author, risk, D.hasOutcomes ? check("problem", tr("f.problem")) : null, check("unstable", tr("f.unstable")), count);
+      author, typeSel, risk, D.hasOutcomes ? check("problem", tr("f.problem")) : null, check("unstable", tr("f.unstable")), count);
     refresh();
     return [h("div", { class: "page-head" }, h("h1", null, tr("prs.title")), h("p", { class: "lead" }, tr("prs.lead"))), bar, out];
   }
@@ -532,8 +561,9 @@
     const gh = D.repo ? h("a", { href: githubPr(r.n), target: "_blank", rel: "noopener" }, tr("pr.github")) : null;
     const head = h("div", { class: "page-head" }, crumbs(link("#/prs", tr("prs.title")), "#" + r.n), h("h1", null, title(r)),
       h("p", { class: "meta" }, h("span", null, T("pr.author", { author: link(devHref(r.author), r.author) })), h("span", null, tr("pr.merged", { date: date(r.merged) })),
-        h("span", { class: "nowrap" }, tr("pr.lines", { a: r.add, d: r.del })), badge(("ci." + r.ci) in L ? tr("ci." + r.ci) : r.ci, r.ci === "failure" ? "bad" : ""), gh),
-      r.summary ? h("p", { class: "lead" }, r.summary) : null);
+        h("span", { class: "nowrap" }, tr("pr.lines", { a: r.add, d: r.del })), typeBadge(r), badge(("ci." + r.ci) in L ? tr("ci." + r.ci) : r.ci, r.ci === "failure" ? "bad" : ""), gh),
+      r.summary ? h("p", { class: "lead" }, r.summary) : null,
+      r.type ? h("p", { class: "type-note" }, h("strong", null, tr("pr.type", { type: typeName(r.type) })), r.typeReason ? " " + r.typeReason : "") : null);
 
     const notices = [];
     if (o && o.reverted) notices.push(h("div", { class: "notice bad" }, T("pr.reverted", { list: joined(o.reverted_by.map(prRef)) })));
@@ -698,6 +728,7 @@
     if (data && typeof data === "object") {
       if ("stability" in data && "prs_scored" in data) return "validation";
       if ("merged_before" in data) return "history";
+      if (Array.isArray(data.prs) && Array.isArray(data.types)) return "types";
       if ("weights" in data && "norms" in data) return "config";
       if ("prompt_version" in data || "per_pr" in data) return /style/i.test(name) ? null : "run_stats";
     }

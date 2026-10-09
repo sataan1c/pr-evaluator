@@ -23,6 +23,7 @@
     1. fetch_prs.py   GitHub -> prs.json, all_prs.json, author_history.json
     2. check_data.py  формат prs.json
     3. score.py       prs.json + rubric.md -> scores.json, run_stats.json
+       classify.py    prs.json -> change_types.json (тип изменения: фича, исправление, документация...)
     4. outcomes.py    prs.json + all_prs.json -> outcomes.json
     5. metrics.py     prs.json + scores.json -> metrics.json
     6. style_test.py  prs_style.json, scores_style.json, style_report.json     (нет при --no-style)
@@ -115,6 +116,22 @@ def score_step(title: str, work: Path, source: str, out: str, stats: str, runs: 
     return "partial" if code == 1 else "done"
 
 
+def types_step(work: Path, force: bool, have_key: bool) -> None:
+    """Тип изменения каждого PR (classify.py). Справка, не оценка: без него остальное считается как раньше."""
+    wanted = numbers(work / "prs.json")
+    try:
+        done = {r["number"] for r in json.loads((work / "change_types.json").read_text(encoding="utf-8")).get("prs", [])}
+    except (OSError, ValueError, AttributeError, KeyError, TypeError):
+        done = set()
+    if wanted <= done and not force:
+        print(f"\n=== 3/8 Тип изменения: пропущено, типы уже есть для всех {len(wanted)} PR (change_types.json) ===")
+        return
+    if not have_key:
+        print("\n=== 3/8 Тип изменения: пропущено, модель не настроена ===")
+        return
+    step("3/8 Тип изменения", "classify.py", ["--prs", "prs.json", "--out", "change_types.json"], work, allow=(0, 1))
+
+
 def main() -> int:
     for stream in (sys.stdout, sys.stderr):
         if hasattr(stream, "reconfigure"):
@@ -163,6 +180,7 @@ def main() -> int:
                         args.runs, args.force or args.rescore, have_key)
     if scored == "partial":
         warnings.append("оценена только часть PR: расчёты идут по оценённым")
+    types_step(work, args.force, have_key)
 
     if (work / "all_prs.json").is_file():
         step("4/8 Разметка откатов и исправлений", "outcomes.py",
@@ -201,7 +219,7 @@ def main() -> int:
     print("\n" + "=" * 60)
     print(f"Готово. Результаты в {work}:")
     for name, what in [("scores.json", "оценки PR с объяснениями"), ("metrics.json", "множители по разработчикам"),
-                       ("outcomes.json", "откаты и исправления"), ("validation.md", "отчёт о валидации словами"),
+                       ("change_types.json", "тип изменения каждого PR"), ("outcomes.json", "откаты и исправления"), ("validation.md", "отчёт о валидации словами"),
                        ("validation.json", "числа для графика и слайда"), ("run_stats.json", "стоимость и стабильность прогона")]:
         if (work / name).is_file():
             print(f"  {name:<18}{what}")

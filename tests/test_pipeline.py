@@ -35,7 +35,8 @@ class WholePipeline(unittest.TestCase):
     def test_every_step_ran_and_the_run_is_clean(self):
         self.assertEqual(self.code, 0, self.out[-3000:])
         for name in ("prs.json", "all_prs.json", "author_history.json", "scores.json", "run_stats.json", "outcomes.json",
-                     "metrics.json", "prs_style.json", "scores_style.json", "style_report.json", "validation.json", "validation.md"):
+                     "metrics.json", "prs_style.json", "scores_style.json", "style_report.json", "validation.json", "validation.md",
+                     "change_types.json"):
             self.assertTrue((self.dir / name).is_file(), name)
         self.assertNotIn("Traceback", self.out)
 

@@ -39,6 +39,25 @@ def _section(text: str, start: str, end: str) -> str:
     return text[a + len(start): b if b >= 0 else len(text)].strip()
 
 
+def classify_text(text: str) -> dict:
+    """Тип изменения по списку файлов, как его выбрал бы человек по беглому взгляду. Детерминированно."""
+    files = [line.strip() for line in _section(text, "Files:", "Beginning of each diff:").splitlines() if line.strip()]
+    title = (text.split("Title:", 1)[-1].splitlines() or [""])[0].lower()
+    if files and all(f.startswith("docs/") or f.endswith(".md") for f in files):
+        kind = "docs"
+    elif files and all(f.startswith("tests/") for f in files):
+        kind = "tests"
+    elif files and all(f.startswith(".github/") for f in files):
+        kind = "build"
+    elif title.startswith(("fix", "revert")):
+        kind = "bugfix"
+    elif title.startswith(("add", "support", "allow")):
+        kind = "feature"
+    else:
+        kind = "refactor"
+    return {"type": kind, "reason": "заглушка: тип по списку файлов и заголовку"}
+
+
 def score_text(text: str, call_no: int = 1) -> dict:
     """Правила вместо модели. call_no — который раз приходит этот же текст (номер прогона)."""
     title = _section(text, "Title: ", "\n")
@@ -121,7 +140,10 @@ class FakeLLM:
             self.requests.append(payload)
         retry = users[-1].startswith("That answer was rejected")
         text = next((u for u in reversed(users) if u.startswith("PULL REQUEST DATA")), None)
-        if text is None:
+        system = next((m.get("content") or "" for m in messages if m.get("role") == "system"), "")
+        if "classify one merged pull request" in system:
+            content = json.dumps(classify_text(users[-1]), ensure_ascii=False)   # запрос classify.py: тип изменения
+        elif text is None:
             content = "OK"   # проверка связи при первом запуске score.py
         else:
             with self.lock:

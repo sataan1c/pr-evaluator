@@ -10,6 +10,7 @@
     scores.json    четыре критерия, баллы 1–5, причина у каждого балла, каждая ссылка
                    указывает на файл из diff этого PR, каждый PR оценён
     outcomes.json  номера из prs.json, флаги согласованы со списками
+    change_types.json  номера из prs.json, тип из списка classify.py, причина у каждого типа
     metrics.json   поля, уровень, множитель в разрешённом диапазоне, и главное:
                    пересчёт из текущих prs.json и scores.json даёт те же числа
                    (иначе файл устарел и дашборд показывает вчерашнее)
@@ -186,6 +187,33 @@ def check_outcomes(outcomes, prs_by_number, rep, name="outcomes.json"):
         rep.warn(name, "ни у одного PR не прошло окно наблюдения: валидации будет не на чем считать")
 
 
+CHANGE_TYPES = ["feature", "bugfix", "performance", "refactor", "docs", "tests", "build"]   # как в classify.py
+
+
+def check_types(data, prs_by_number, rep, name="change_types.json"):
+    if not isinstance(data, dict) or not isinstance(data.get("prs"), list):
+        rep.error(name, "должен быть объектом с полем prs: списком записей {number, type, reason}")
+        return
+    seen = set()
+    for i, r in enumerate(data["prs"]):
+        where = f"{name} #{r.get('number', '?') if isinstance(r, dict) else '?'}"
+        if not isinstance(r, dict) or not _is_int(r.get("number")):
+            rep.error(f"{name}[{i}]", "у записи должен быть целый number")
+            continue
+        if r["number"] in seen:
+            rep.error(where, "тип указан дважды")
+        seen.add(r["number"])
+        if r["number"] not in prs_by_number:
+            rep.error(where, "такого PR нет в prs.json")
+        if r.get("type") not in CHANGE_TYPES:
+            rep.error(where, f"type должен быть одним из {', '.join(CHANGE_TYPES)}, а не {r.get('type')!r}")
+        if not isinstance(r.get("reason"), str) or not r["reason"].strip():
+            rep.error(where, "reason пуст: тип без объяснения показывать нельзя")
+    missing = sorted(set(prs_by_number) - seen)
+    if missing:
+        rep.warn(name, f"тип не определён у {len(missing)} PR из prs.json: запустите classify.py")
+
+
 def check_metrics(data, rep, cfg=None, expected=None, name="metrics.json"):
     low, high = (cfg["multiplier"]["min"], cfg["multiplier"]["max"]) if cfg else (0, 10)
     seen = set()
@@ -263,6 +291,10 @@ def check_folder(folder: Path, config_path: Path, only_prs: bool = False) -> Rep
     outcomes = load("outcomes.json")
     if outcomes is not None:
         check_outcomes(outcomes, by_number, rep)
+
+    types = load("change_types.json")
+    if types is not None:
+        check_types(types, by_number, rep)
 
     metrics = load("metrics.json")
     if metrics is not None:

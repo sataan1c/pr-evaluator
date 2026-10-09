@@ -25,8 +25,10 @@ def _in_period(pr: dict, since: str, until: str) -> bool:
 
 
 def _scored_prs(data: dict, since: str = "", until: str = "") -> list[dict]:
-    """PR с оценками за период: [{number, title, author, merged_at, scores{...}, summary, unstable}]."""
+    """PR с оценками за период: [{number, title, author, merged_at, type, scores{...}, summary, unstable}]."""
     by_number = {s.get("number"): s for s in data.get("scores") or [] if isinstance(s, dict)}
+    types = data.get("types") if isinstance(data.get("types"), dict) else {}
+    type_by = {t.get("number"): t for t in types.get("prs") or [] if isinstance(t, dict)}
     out = []
     for pr in data.get("prs") or []:
         s = by_number.get(pr.get("number"))
@@ -39,6 +41,7 @@ def _scored_prs(data: dict, since: str = "", until: str = "") -> list[dict]:
             "merged_at": pr.get("merged_at"),
             "summary": s.get("summary", ""),
             "unstable": bool(s.get("unstable")),
+            "type": (type_by.get(pr.get("number")) or {}).get("type"),
             "scores": {c: (s.get("scores") or {}).get(c, {}).get("score") for c in CRITERIA},
         })
     return out
@@ -50,6 +53,15 @@ def _medians(items: list[dict]) -> dict:
         values = [i["scores"][c] for i in items if isinstance(i["scores"].get(c), (int, float))]
         res[c] = statistics.median(values) if values else None
     return res
+
+
+def _type_mix(items: list[dict]) -> dict:
+    """Сколько PR каждого типа изменения: {"bugfix": 5, "feature": 2}. Без типов — пустой словарь."""
+    mix = {}
+    for i in items:
+        if i.get("type"):
+            mix[i["type"]] = mix.get(i["type"], 0) + 1
+    return dict(sorted(mix.items(), key=lambda kv: -kv[1]))
 
 
 def _pr_url(repo: str, number) -> str:
@@ -80,6 +92,7 @@ def employee_report(data: dict, employee_id: str, since: str = "", until: str = 
         "composite": metric.get("composite"),
         "norm": metric.get("norm"),
         "flags": metric.get("flags", []),
+        "change_types": _type_mix(mine),
         "same_level": {
             "level": level,
             "people": len(peers),
@@ -101,6 +114,7 @@ def team_report(data: dict, since: str = "", until: str = "") -> dict:
         "pr_count": len(team),
         "people": len(people),
         "team_medians": _medians(team),
+        "change_types": _type_mix(team),
         "employees": sorted([{
             "employee_id": author,
             "pr_count": len(items),
@@ -108,5 +122,6 @@ def team_report(data: dict, since: str = "", until: str = "") -> dict:
             "level": metrics.get(author, {}).get("level"),
             "multiplier": metrics.get(author, {}).get("multiplier"),
             "flags": metrics.get(author, {}).get("flags", []),
+            "change_types": _type_mix(items),
         } for author, items in people.items()], key=lambda e: (-e["pr_count"], e["employee_id"])),
     }

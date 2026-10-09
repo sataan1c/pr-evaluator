@@ -25,7 +25,7 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 OPTIONAL = {"metrics": "metrics.json", "outcomes": "outcomes.json", "validation": "validation.json",
-            "run_stats": "run_stats.json", "history": "author_history.json"}
+            "run_stats": "run_stats.json", "history": "author_history.json", "types": "change_types.json"}
 
 
 class DataProblem(Exception):

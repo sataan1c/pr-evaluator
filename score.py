@@ -435,6 +435,7 @@ class Model:
         self.headers = {"Authorization": "Bearer " + (cfg.api_key or "")}
         self.max_tokens = cfg.max_tokens or (8000 if "anthropic.com" in cfg.base_url else 0)
         self.json_mode = cfg.json_mode
+        self.schema, self.schema_name = ANSWER_SCHEMA, "pr_scores"   # classify.py ставит свою схему
         self.send_temperature = True
         self.rpm = cfg.rpm          # current pace; 0 = unlimited
         self.rpm_announced = float("inf")
@@ -520,7 +521,7 @@ class Model:
             if self.json_mode == "schema":
                 payload["response_format"] = {
                     "type": "json_schema",
-                    "json_schema": {"name": "pr_scores", "strict": True, "schema": ANSWER_SCHEMA},
+                    "json_schema": {"name": self.schema_name, "strict": True, "schema": self.schema},
                 }
             elif self.json_mode == "object":
                 payload["response_format"] = {"type": "json_object"}
@@ -620,7 +621,7 @@ class ClaudeCLIModel(Model):
         if system:
             command += ["--system-prompt", system]
         if self.json_mode == "schema":
-            command += ["--json-schema", json.dumps(ANSWER_SCHEMA)]
+            command += ["--json-schema", json.dumps(self.schema)]
         command.append("Answer the message given on standard input, following the system prompt."
                        if system else "Answer the message given on standard input.")
         for attempt in range(cfg.http_retries):
