@@ -1,0 +1,153 @@
+{
+  "model": "claude-haiku-5-5",
+  "synthetic": false,
+  "prs_scored": 150,
+  "risk": {
+    "definition": "problem",
+    "prs_scored": 150,
+    "prs_used": 103,
+    "excluded_window_not_passed": 47,
+    "excluded_no_outcome": 0,
+    "problems": 2,
+    "groups": [
+      {
+        "n": 41,
+        "problems": 0,
+        "rate": 0.0,
+        "ci95": [
+          0.0,
+          0.086
+        ],
+        "risk": "1–2"
+      },
+      {
+        "n": 26,
+        "problems": 1,
+        "rate": 0.038,
+        "ci95": [
+          0.007,
+          0.189
+        ],
+        "risk": "3"
+      },
+      {
+        "n": 36,
+        "problems": 1,
+        "rate": 0.028,
+        "ci95": [
+          0.005,
+          0.142
+        ],
+        "risk": "4–5"
+      }
+    ],
+    "high_vs_low_p": 0.4675,
+    "auc_risk": {
+      "value": 0.678,
+      "ci95": [
+        0.475,
+        0.856
+      ]
+    },
+    "auc_size": {
+      "value": 0.421,
+      "ci95": [
+        0.119,
+        0.743
+      ]
+    },
+    "verdict": "too_few_problems",
+    "problem_prs": [
+      13624,
+      13768
+    ]
+  },
+  "risk_strict": {
+    "definition": "problem_strict",
+    "prs_scored": 150,
+    "prs_used": 103,
+    "excluded_window_not_passed": 47,
+    "excluded_no_outcome": 0,
+    "problems": 0,
+    "groups": [
+      {
+        "n": 41,
+        "problems": 0,
+        "rate": 0.0,
+        "ci95": [
+          0.0,
+          0.086
+        ],
+        "risk": "1–2"
+      },
+      {
+        "n": 26,
+        "problems": 0,
+        "rate": 0.0,
+        "ci95": [
+          0.0,
+          0.129
+        ],
+        "risk": "3"
+      },
+      {
+        "n": 36,
+        "problems": 0,
+        "rate": 0.0,
+        "ci95": [
+          0.0,
+          0.096
+        ],
+        "risk": "4–5"
+      }
+    ],
+    "high_vs_low_p": 1.0,
+    "auc_risk": null,
+    "auc_size": null,
+    "verdict": "too_few_problems",
+    "problem_prs": []
+  },
+  "human": {
+    "prs": 20,
+    "not_in_scores": [],
+    "criteria": {
+      "complexity": {
+        "n": 20,
+        "exact": 0.6,
+        "within_1": 0.95,
+        "mean_model_minus_human": -0.15
+      },
+      "quality": {
+        "n": 20,
+        "exact": 0.2,
+        "within_1": 0.85,
+        "mean_model_minus_human": -0.95
+      },
+      "risk": {
+        "n": 20,
+        "exact": 0.4,
+        "within_1": 0.95,
+        "mean_model_minus_human": -0.35
+      },
+      "clarity": {
+        "n": 20,
+        "exact": 0.2,
+        "within_1": 0.4,
+        "mean_model_minus_human": -1.6
+      }
+    },
+    "ratings": 80,
+    "within_1": 0.787,
+    "exact": 0.35
+  },
+  "style": null,
+  "stability": {
+    "prs_with_several_runs": 0,
+    "unstable": 0,
+    "all_runs_identical": null,
+    "evidence_removed": 0,
+    "evidence_lines_cleared": 0,
+    "answers_rejected_and_retried": 0,
+    "author_login_still_visible": []
+  }
+}

@@ -1,4 +1,5 @@
 {
+  "repo": "pydantic/pydantic",
   "period_start": "2026-07-29T19:52:48Z",
   "merged_before": {
     "Bishwas-py": 0,

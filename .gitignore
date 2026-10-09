@@ -13,3 +13,14 @@ venv/
 Thumbs.db
 .vscode/
 .idea/
+
+# score.py: превью промпта и временные файлы
+prompt_preview.txt
+*.tmp
+
+# репетиции и пробные оценки: это не данные проекта
+demo_out/
+mock_out/
+
+# собирается скриптом dashboard/make_data.py
+dashboard/data.js

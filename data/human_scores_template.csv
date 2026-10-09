@@ -1,0 +1,21 @@
+﻿number;title;url;complexity;quality;risk;clarity
+13954;Fix `arguments-v3` schema with variadic keywords;https://github.com/pydantic/pydantic/pull/13954;;;;
+13931;Fix datetime parsing in custom validator examples;https://github.com/pydantic/pydantic/pull/13931;;;;
+13930;Remove xfail on lazy imports tests;https://github.com/pydantic/pydantic/pull/13930;;;;
+13904;Convert annotation to footnote in documentation;https://github.com/pydantic/pydantic/pull/13904;;;;
+13892;Don't apply `ser_json_timedelta` to all datetime types in serialization inference;https://github.com/pydantic/pydantic/pull/13892;;;;
+13866;Update contributing guide to mention symlinks Git option;https://github.com/pydantic/pydantic/pull/13866;;;;
+13863;Fix PyPy 8.0.0 test failure;https://github.com/pydantic/pydantic/pull/13863;;;;
+13820;Add a debug Python test target in CI;https://github.com/pydantic/pydantic/pull/13820;;;;
+13782;Stabilize `MISSING` sentinel;https://github.com/pydantic/pydantic/pull/13782;;;;
+13757;Add a `deque` core schema;https://github.com/pydantic/pydantic/pull/13757;;;;
+13741;Handle any exception when trying to compute JSON Schema default;https://github.com/pydantic/pydantic/pull/13741;;;;
+13220;Use maturin `--pgo` option;https://github.com/pydantic/pydantic/pull/13220;;;;
+13711;Don't apply serialization temporal formats to validation JSON schemas;https://github.com/pydantic/pydantic/pull/13711;;;;
+13690;Use list schema for bare `collections.abc.MutableSequence`;https://github.com/pydantic/pydantic/pull/13690;;;;
+13674;Fix third-party tests;https://github.com/pydantic/pydantic/pull/13674;;;;
+13659;Fix application of other constraints in the pipeline API;https://github.com/pydantic/pydantic/pull/13659;;;;
+13624;Fix missing GC traversal on some `pydantic-core` struct fields;https://github.com/pydantic/pydantic/pull/13624;;;;
+13506;Raise explicit `TypeError` on invalid `index_key` serialization wrap handler;https://github.com/pydantic/pydantic/pull/13506;;;;
+13576;Fix Arch CI jobs;https://github.com/pydantic/pydantic/pull/13576;;;;
+13536;"Revert ""Make `FailFast` hashable""";https://github.com/pydantic/pydantic/pull/13536;;;;

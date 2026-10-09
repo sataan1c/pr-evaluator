@@ -1,0 +1,613 @@
+[
+  {
+    "author": "adivx",
+    "level": "junior",
+    "pr_count": 1,
+    "medians": {
+      "complexity": 1,
+      "quality": 1,
+      "risk": 1,
+      "clarity": 3
+    },
+    "composite": 1.6,
+    "norm": 3.3,
+    "multiplier": null,
+    "flags": [
+      "insufficient_data"
+    ],
+    "level_source": "history",
+    "norm_source": "calibrated"
+  },
+  {
+    "author": "agustin18",
+    "level": "junior",
+    "pr_count": 1,
+    "medians": {
+      "complexity": 2,
+      "quality": 3,
+      "risk": 2,
+      "clarity": 4
+    },
+    "composite": 3.1,
+    "norm": 3.3,
+    "multiplier": null,
+    "flags": [
+      "insufficient_data"
+    ],
+    "level_source": "history",
+    "norm_source": "calibrated"
+  },
+  {
+    "author": "Bishwas-py",
+    "level": "junior",
+    "pr_count": 2,
+    "medians": {
+      "complexity": 1.5,
+      "quality": 4,
+      "risk": 2,
+      "clarity": 4
+    },
+    "composite": 3.5,
+    "norm": 3.3,
+    "multiplier": null,
+    "flags": [
+      "insufficient_data"
+    ],
+    "level_source": "history",
+    "norm_source": "calibrated"
+  },
+  {
+    "author": "chenlichao",
+    "level": "junior",
+    "pr_count": 3,
+    "medians": {
+      "complexity": 1,
+      "quality": 3,
+      "risk": 1,
+      "clarity": 5
+    },
+    "composite": 3.2,
+    "norm": 3.3,
+    "multiplier": 0.98,
+    "flags": [],
+    "level_source": "history",
+    "norm_source": "calibrated"
+  },
+  {
+    "author": "ChinesePrince07",
+    "level": "junior",
+    "pr_count": 1,
+    "medians": {
+      "complexity": 1,
+      "quality": 3,
+      "risk": 1,
+      "clarity": 4
+    },
+    "composite": 2.9,
+    "norm": 3.3,
+    "multiplier": null,
+    "flags": [
+      "insufficient_data"
+    ],
+    "level_source": "history",
+    "norm_source": "calibrated"
+  },
+  {
+    "author": "davidhewitt",
+    "level": "senior",
+    "pr_count": 3,
+    "medians": {
+      "complexity": 2,
+      "quality": 3,
+      "risk": 3,
+      "clarity": 2
+    },
+    "composite": 2.3,
+    "norm": 3.8,
+    "multiplier": 0.9,
+    "flags": [],
+    "level_source": "history",
+    "norm_source": "config"
+  },
+  {
+    "author": "destopianpirate",
+    "level": "junior",
+    "pr_count": 2,
+    "medians": {
+      "complexity": 1.5,
+      "quality": 3.5,
+      "risk": 1,
+      "clarity": 4
+    },
+    "composite": 3.25,
+    "norm": 3.3,
+    "multiplier": null,
+    "flags": [
+      "insufficient_data"
+    ],
+    "level_source": "history",
+    "norm_source": "calibrated"
+  },
+  {
+    "author": "dmontagu",
+    "level": "senior",
+    "pr_count": 3,
+    "medians": {
+      "complexity": 3,
+      "quality": 3,
+      "risk": 3,
+      "clarity": 4
+    },
+    "composite": 3.2,
+    "norm": 3.8,
+    "multiplier": 0.92,
+    "flags": [],
+    "level_source": "history",
+    "norm_source": "config"
+  },
+  {
+    "author": "dylanpulver",
+    "level": "junior",
+    "pr_count": 1,
+    "medians": {
+      "complexity": 2,
+      "quality": 2,
+      "risk": 1,
+      "clarity": 4
+    },
+    "composite": 2.6,
+    "norm": 3.3,
+    "multiplier": null,
+    "flags": [
+      "insufficient_data"
+    ],
+    "level_source": "history",
+    "norm_source": "calibrated"
+  },
+  {
+    "author": "FanWu-ai",
+    "level": "junior",
+    "pr_count": 1,
+    "medians": {
+      "complexity": 2,
+      "quality": 4,
+      "risk": 1,
+      "clarity": 4
+    },
+    "composite": 3.6,
+    "norm": 3.3,
+    "multiplier": null,
+    "flags": [
+      "insufficient_data"
+    ],
+    "level_source": "history",
+    "norm_source": "calibrated"
+  },
+  {
+    "author": "faresrafat3",
+    "level": "junior",
+    "pr_count": 1,
+    "medians": {
+      "complexity": 3,
+      "quality": 4,
+      "risk": 1,
+      "clarity": 5
+    },
+    "composite": 4.1,
+    "norm": 3.3,
+    "multiplier": null,
+    "flags": [
+      "insufficient_data"
+    ],
+    "level_source": "history",
+    "norm_source": "calibrated"
+  },
+  {
+    "author": "gonisulaimann",
+    "level": "junior",
+    "pr_count": 1,
+    "medians": {
+      "complexity": 1,
+      "quality": 2,
+      "risk": 1,
+      "clarity": 4
+    },
+    "composite": 2.4,
+    "norm": 3.3,
+    "multiplier": null,
+    "flags": [
+      "insufficient_data"
+    ],
+    "level_source": "history",
+    "norm_source": "calibrated"
+  },
+  {
+    "author": "GreedyC",
+    "level": "junior",
+    "pr_count": 1,
+    "medians": {
+      "complexity": 1,
+      "quality": 3,
+      "risk": 1,
+      "clarity": 4
+    },
+    "composite": 2.9,
+    "norm": 3.3,
+    "multiplier": null,
+    "flags": [
+      "insufficient_data"
+    ],
+    "level_source": "history",
+    "norm_source": "calibrated"
+  },
+  {
+    "author": "jaideeppyne",
+    "level": "junior",
+    "pr_count": 1,
+    "medians": {
+      "complexity": 3,
+      "quality": 4,
+      "risk": 3,
+      "clarity": 5
+    },
+    "composite": 4.1,
+    "norm": 3.3,
+    "multiplier": null,
+    "flags": [
+      "insufficient_data"
+    ],
+    "level_source": "history",
+    "norm_source": "calibrated"
+  },
+  {
+    "author": "JiuYue0820",
+    "level": "junior",
+    "pr_count": 1,
+    "medians": {
+      "complexity": 1,
+      "quality": 3,
+      "risk": 1,
+      "clarity": 4
+    },
+    "composite": 2.9,
+    "norm": 3.3,
+    "multiplier": null,
+    "flags": [
+      "insufficient_data"
+    ],
+    "level_source": "history",
+    "norm_source": "calibrated"
+  },
+  {
+    "author": "kratos0718",
+    "level": "junior",
+    "pr_count": 1,
+    "medians": {
+      "complexity": 2,
+      "quality": 3,
+      "risk": 2,
+      "clarity": 5
+    },
+    "composite": 3.4,
+    "norm": 3.3,
+    "multiplier": null,
+    "flags": [
+      "insufficient_data"
+    ],
+    "level_source": "history",
+    "norm_source": "calibrated"
+  },
+  {
+    "author": "Kropiunig",
+    "level": "junior",
+    "pr_count": 3,
+    "medians": {
+      "complexity": 3,
+      "quality": 4,
+      "risk": 3,
+      "clarity": 4
+    },
+    "composite": 3.8,
+    "norm": 3.3,
+    "multiplier": 1.08,
+    "flags": [],
+    "level_source": "history",
+    "norm_source": "calibrated"
+  },
+  {
+    "author": "lakshay-gahlawat",
+    "level": "junior",
+    "pr_count": 1,
+    "medians": {
+      "complexity": 2,
+      "quality": 3,
+      "risk": 1,
+      "clarity": 3
+    },
+    "composite": 2.8,
+    "norm": 3.3,
+    "multiplier": null,
+    "flags": [
+      "insufficient_data"
+    ],
+    "level_source": "history",
+    "norm_source": "calibrated"
+  },
+  {
+    "author": "LouisDeconinck",
+    "level": "junior",
+    "pr_count": 1,
+    "medians": {
+      "complexity": 2,
+      "quality": 4,
+      "risk": 1,
+      "clarity": 4
+    },
+    "composite": 3.6,
+    "norm": 3.3,
+    "multiplier": null,
+    "flags": [
+      "insufficient_data"
+    ],
+    "level_source": "history",
+    "norm_source": "calibrated"
+  },
+  {
+    "author": "loulanyue",
+    "level": "junior",
+    "pr_count": 1,
+    "medians": {
+      "complexity": 1,
+      "quality": 3,
+      "risk": 1,
+      "clarity": 3
+    },
+    "composite": 2.6,
+    "norm": 3.3,
+    "multiplier": null,
+    "flags": [
+      "insufficient_data"
+    ],
+    "level_source": "history",
+    "norm_source": "calibrated"
+  },
+  {
+    "author": "mberdyshev",
+    "level": "junior",
+    "pr_count": 2,
+    "medians": {
+      "complexity": 2,
+      "quality": 2,
+      "risk": 2.5,
+      "clarity": 3
+    },
+    "composite": 2.3,
+    "norm": 3.3,
+    "multiplier": null,
+    "flags": [
+      "insufficient_data"
+    ],
+    "level_source": "history",
+    "norm_source": "calibrated"
+  },
+  {
+    "author": "MLuc24",
+    "level": "junior",
+    "pr_count": 3,
+    "medians": {
+      "complexity": 3,
+      "quality": 4,
+      "risk": 3,
+      "clarity": 5
+    },
+    "composite": 4.1,
+    "norm": 3.3,
+    "multiplier": 1.12,
+    "flags": [],
+    "level_source": "history",
+    "norm_source": "calibrated"
+  },
+  {
+    "author": "remi-fongaufier",
+    "level": "junior",
+    "pr_count": 1,
+    "medians": {
+      "complexity": 2,
+      "quality": 3,
+      "risk": 2,
+      "clarity": 4
+    },
+    "composite": 3.1,
+    "norm": 3.3,
+    "multiplier": null,
+    "flags": [
+      "insufficient_data"
+    ],
+    "level_source": "history",
+    "norm_source": "calibrated"
+  },
+  {
+    "author": "saquibjawedbit",
+    "level": "junior",
+    "pr_count": 1,
+    "medians": {
+      "complexity": 2,
+      "quality": 4,
+      "risk": 3,
+      "clarity": 5
+    },
+    "composite": 3.9,
+    "norm": 3.3,
+    "multiplier": null,
+    "flags": [
+      "insufficient_data"
+    ],
+    "level_source": "history",
+    "norm_source": "calibrated"
+  },
+  {
+    "author": "sharkdp",
+    "level": "junior",
+    "pr_count": 1,
+    "medians": {
+      "complexity": 2,
+      "quality": 3,
+      "risk": 2,
+      "clarity": 4
+    },
+    "composite": 3.1,
+    "norm": 3.3,
+    "multiplier": null,
+    "flags": [
+      "insufficient_data"
+    ],
+    "level_source": "history",
+    "norm_source": "calibrated"
+  },
+  {
+    "author": "shashiKundur1",
+    "level": "junior",
+    "pr_count": 1,
+    "medians": {
+      "complexity": 3,
+      "quality": 4,
+      "risk": 4,
+      "clarity": 5
+    },
+    "composite": 4.1,
+    "norm": 3.3,
+    "multiplier": null,
+    "flags": [
+      "insufficient_data"
+    ],
+    "level_source": "history",
+    "norm_source": "calibrated"
+  },
+  {
+    "author": "simpleqt",
+    "level": "junior",
+    "pr_count": 4,
+    "medians": {
+      "complexity": 1,
+      "quality": 3,
+      "risk": 1,
+      "clarity": 4
+    },
+    "composite": 2.9,
+    "norm": 3.3,
+    "multiplier": 0.94,
+    "flags": [],
+    "level_source": "history",
+    "norm_source": "calibrated"
+  },
+  {
+    "author": "soma0212",
+    "level": "junior",
+    "pr_count": 1,
+    "medians": {
+      "complexity": 3,
+      "quality": 3,
+      "risk": 2,
+      "clarity": 4
+    },
+    "composite": 3.3,
+    "norm": 3.3,
+    "multiplier": null,
+    "flags": [
+      "insufficient_data"
+    ],
+    "level_source": "history",
+    "norm_source": "calibrated"
+  },
+  {
+    "author": "strawgate",
+    "level": "junior",
+    "pr_count": 5,
+    "medians": {
+      "complexity": 3,
+      "quality": 3,
+      "risk": 2,
+      "clarity": 4
+    },
+    "composite": 3.3,
+    "norm": 3.3,
+    "multiplier": 1.0,
+    "flags": [],
+    "level_source": "history",
+    "norm_source": "calibrated"
+  },
+  {
+    "author": "tamird",
+    "level": "junior",
+    "pr_count": 1,
+    "medians": {
+      "complexity": 4,
+      "quality": 4,
+      "risk": 4,
+      "clarity": 4
+    },
+    "composite": 4.0,
+    "norm": 3.3,
+    "multiplier": null,
+    "flags": [
+      "insufficient_data"
+    ],
+    "level_source": "history",
+    "norm_source": "calibrated"
+  },
+  {
+    "author": "TheGreatApollyon",
+    "level": "junior",
+    "pr_count": 1,
+    "medians": {
+      "complexity": 1,
+      "quality": 2,
+      "risk": 1,
+      "clarity": 3
+    },
+    "composite": 2.1,
+    "norm": 3.3,
+    "multiplier": null,
+    "flags": [
+      "insufficient_data"
+    ],
+    "level_source": "history",
+    "norm_source": "calibrated"
+  },
+  {
+    "author": "Viicos",
+    "level": "senior",
+    "pr_count": 98,
+    "medians": {
+      "complexity": 3,
+      "quality": 3,
+      "risk": 3,
+      "clarity": 2
+    },
+    "composite": 2.8,
+    "norm": 3.8,
+    "multiplier": 0.9,
+    "flags": [],
+    "level_source": "history",
+    "norm_source": "config"
+  },
+  {
+    "author": "wse114",
+    "level": "junior",
+    "pr_count": 1,
+    "medians": {
+      "complexity": 1,
+      "quality": 2,
+      "risk": 1,
+      "clarity": 4
+    },
+    "composite": 2.4,
+    "norm": 3.3,
+    "multiplier": null,
+    "flags": [
+      "insufficient_data"
+    ],
+    "level_source": "history",
+    "norm_source": "calibrated"
+  }
+]

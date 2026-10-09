@@ -1,0 +1,1784 @@
+{
+  "model": "fake-llm",
+  "base_url": "http://127.0.0.1:35679/v1",
+  "prompt_version": "d46977ea",
+  "input": "prs.json",
+  "runs_per_pr": 3,
+  "prs_in": 70,
+  "prs_scored": 70,
+  "failed": [],
+  "duplicates_skipped": 0,
+  "unstable": [
+    162,
+    155,
+    147,
+    143
+  ],
+  "all_runs_identical": 54,
+  "requests_this_launch": 232,
+  "runs_from_cache": 0,
+  "answers_rejected_and_retried": 22,
+  "evidence_removed": 24,
+  "evidence_lines_cleared": 9,
+  "author_login_still_visible": [
+    187
+  ],
+  "tokens": {
+    "in": 454615,
+    "out": 36004
+  },
+  "cost_usd": null,
+  "seconds": 0.6,
+  "per_pr": {
+    "164": {
+      "run_scores": {
+        "complexity": [
+          2,
+          2,
+          2
+        ],
+        "quality": [
+          3,
+          3,
+          3
+        ],
+        "risk": [
+          1,
+          1,
+          1
+        ],
+        "clarity": [
+          4,
+          4,
+          4
+        ]
+      },
+      "run_errors": []
+    },
+    "163": {
+      "run_scores": {
+        "complexity": [
+          3,
+          3,
+          3
+        ],
+        "quality": [
+          3,
+          3,
+          3
+        ],
+        "risk": [
+          5,
+          5,
+          5
+        ],
+        "clarity": [
+          1,
+          1,
+          1
+        ]
+      },
+      "run_errors": []
+    },
+    "178": {
+      "run_scores": {
+        "complexity": [
+          1,
+          1,
+          1
+        ],
+        "quality": [
+          5,
+          5,
+          5
+        ],
+        "risk": [
+          1,
+          1,
+          1
+        ],
+        "clarity": [
+          2,
+          2,
+          2
+        ]
+      },
+      "run_errors": []
+    },
+    "162": {
+      "run_scores": {
+        "complexity": [
+          3,
+          3,
+          3
+        ],
+        "quality": [
+          3,
+          5,
+          5
+        ],
+        "risk": [
+          1,
+          1,
+          1
+        ],
+        "clarity": [
+          4,
+          4,
+          4
+        ]
+      },
+      "run_errors": []
+    },
+    "161": {
+      "run_scores": {
+        "complexity": [
+          4,
+          4,
+          4
+        ],
+        "quality": [
+          4,
+          4,
+          4
+        ],
+        "risk": [
+          2,
+          2,
+          2
+        ],
+        "clarity": [
+          1,
+          1,
+          1
+        ]
+      },
+      "run_errors": []
+    },
+    "160": {
+      "run_scores": {
+        "complexity": [
+          3,
+          3,
+          3
+        ],
+        "quality": [
+          4,
+          4,
+          4
+        ],
+        "risk": [
+          5,
+          5,
+          5
+        ],
+        "clarity": [
+          4,
+          4,
+          4
+        ]
+      },
+      "run_errors": []
+    },
+    "159": {
+      "run_scores": {
+        "complexity": [
+          3,
+          3,
+          3
+        ],
+        "quality": [
+          4,
+          4,
+          4
+        ],
+        "risk": [
+          1,
+          1,
+          1
+        ],
+        "clarity": [
+          1,
+          1,
+          1
+        ]
+      },
+      "run_errors": []
+    },
+    "158": {
+      "run_scores": {
+        "complexity": [
+          3,
+          3,
+          3
+        ],
+        "quality": [
+          4,
+          4,
+          4
+        ],
+        "risk": [
+          1,
+          1,
+          1
+        ],
+        "clarity": [
+          1,
+          1,
+          1
+        ]
+      },
+      "run_errors": []
+    },
+    "177": {
+      "run_scores": {
+        "complexity": [
+          2,
+          2,
+          2
+        ],
+        "quality": [
+          4,
+          5,
+          5
+        ],
+        "risk": [
+          1,
+          1,
+          1
+        ],
+        "clarity": [
+          3,
+          3,
+          3
+        ]
+      },
+      "run_errors": []
+    },
+    "183": {
+      "run_scores": {
+        "complexity": [
+          1,
+          1,
+          1
+        ],
+        "quality": [
+          5,
+          5,
+          5
+        ],
+        "risk": [
+          1,
+          1,
+          1
+        ],
+        "clarity": [
+          2,
+          2,
+          2
+        ]
+      },
+      "run_errors": []
+    },
+    "157": {
+      "run_scores": {
+        "complexity": [
+          2,
+          2,
+          2
+        ],
+        "quality": [
+          5,
+          5,
+          5
+        ],
+        "risk": [
+          1,
+          1,
+          1
+        ],
+        "clarity": [
+          2,
+          2,
+          2
+        ]
+      },
+      "run_errors": []
+    },
+    "156": {
+      "run_scores": {
+        "complexity": [
+          2,
+          2,
+          2
+        ],
+        "quality": [
+          3,
+          3,
+          3
+        ],
+        "risk": [
+          1,
+          1,
+          1
+        ],
+        "clarity": [
+          4,
+          3,
+          4
+        ]
+      },
+      "run_errors": []
+    },
+    "155": {
+      "run_scores": {
+        "complexity": [
+          3,
+          3,
+          3
+        ],
+        "quality": [
+          3,
+          3,
+          1
+        ],
+        "risk": [
+          5,
+          5,
+          5
+        ],
+        "clarity": [
+          4,
+          4,
+          4
+        ]
+      },
+      "run_errors": []
+    },
+    "154": {
+      "run_scores": {
+        "complexity": [
+          3,
+          3,
+          3
+        ],
+        "quality": [
+          4,
+          4,
+          4
+        ],
+        "risk": [
+          5,
+          5,
+          5
+        ],
+        "clarity": [
+          4,
+          4,
+          4
+        ]
+      },
+      "run_errors": []
+    },
+    "153": {
+      "run_scores": {
+        "complexity": [
+          3,
+          3,
+          3
+        ],
+        "quality": [
+          3,
+          3,
+          3
+        ],
+        "risk": [
+          5,
+          5,
+          5
+        ],
+        "clarity": [
+          3,
+          2,
+          2
+        ]
+      },
+      "run_errors": []
+    },
+    "152": {
+      "run_scores": {
+        "complexity": [
+          1,
+          1,
+          1
+        ],
+        "quality": [
+          4,
+          4,
+          4
+        ],
+        "risk": [
+          1,
+          1,
+          1
+        ],
+        "clarity": [
+          1,
+          1,
+          1
+        ]
+      },
+      "run_errors": []
+    },
+    "151": {
+      "run_scores": {
+        "complexity": [
+          1,
+          1,
+          1
+        ],
+        "quality": [
+          4,
+          4,
+          4
+        ],
+        "risk": [
+          1,
+          1,
+          1
+        ],
+        "clarity": [
+          4,
+          4,
+          4
+        ]
+      },
+      "run_errors": []
+    },
+    "176": {
+      "run_scores": {
+        "complexity": [
+          2,
+          2,
+          2
+        ],
+        "quality": [
+          5,
+          5,
+          5
+        ],
+        "risk": [
+          1,
+          1,
+          1
+        ],
+        "clarity": [
+          3,
+          3,
+          3
+        ]
+      },
+      "run_errors": []
+    },
+    "150": {
+      "run_scores": {
+        "complexity": [
+          2,
+          3,
+          3
+        ],
+        "quality": [
+          5,
+          5,
+          5
+        ],
+        "risk": [
+          1,
+          1,
+          1
+        ],
+        "clarity": [
+          1,
+          1,
+          1
+        ]
+      },
+      "run_errors": []
+    },
+    "149": {
+      "run_scores": {
+        "complexity": [
+          3,
+          3,
+          3
+        ],
+        "quality": [
+          4,
+          4,
+          4
+        ],
+        "risk": [
+          4,
+          4,
+          4
+        ],
+        "clarity": [
+          4,
+          4,
+          4
+        ]
+      },
+      "run_errors": []
+    },
+    "148": {
+      "run_scores": {
+        "complexity": [
+          3,
+          3,
+          3
+        ],
+        "quality": [
+          3,
+          3,
+          3
+        ],
+        "risk": [
+          2,
+          2,
+          2
+        ],
+        "clarity": [
+          4,
+          4,
+          4
+        ]
+      },
+      "run_errors": []
+    },
+    "147": {
+      "run_scores": {
+        "complexity": [
+          3,
+          3,
+          4
+        ],
+        "quality": [
+          3,
+          5,
+          3
+        ],
+        "risk": [
+          5,
+          5,
+          5
+        ],
+        "clarity": [
+          1,
+          1,
+          1
+        ]
+      },
+      "run_errors": []
+    },
+    "175": {
+      "run_scores": {
+        "complexity": [
+          1,
+          1,
+          1
+        ],
+        "quality": [
+          5,
+          5,
+          5
+        ],
+        "risk": [
+          1,
+          1,
+          1
+        ],
+        "clarity": [
+          1,
+          1,
+          1
+        ]
+      },
+      "run_errors": []
+    },
+    "146": {
+      "run_scores": {
+        "complexity": [
+          3,
+          3,
+          3
+        ],
+        "quality": [
+          2,
+          2,
+          2
+        ],
+        "risk": [
+          5,
+          5,
+          5
+        ],
+        "clarity": [
+          4,
+          4,
+          4
+        ]
+      },
+      "run_errors": []
+    },
+    "145": {
+      "run_scores": {
+        "complexity": [
+          3,
+          3,
+          3
+        ],
+        "quality": [
+          4,
+          4,
+          4
+        ],
+        "risk": [
+          2,
+          2,
+          2
+        ],
+        "clarity": [
+          4,
+          4,
+          4
+        ]
+      },
+      "run_errors": []
+    },
+    "174": {
+      "run_scores": {
+        "complexity": [
+          2,
+          1,
+          1
+        ],
+        "quality": [
+          5,
+          5,
+          5
+        ],
+        "risk": [
+          1,
+          1,
+          1
+        ],
+        "clarity": [
+          1,
+          1,
+          1
+        ]
+      },
+      "run_errors": []
+    },
+    "144": {
+      "run_scores": {
+        "complexity": [
+          3,
+          3,
+          3
+        ],
+        "quality": [
+          4,
+          4,
+          4
+        ],
+        "risk": [
+          3,
+          3,
+          3
+        ],
+        "clarity": [
+          4,
+          4,
+          4
+        ]
+      },
+      "run_errors": []
+    },
+    "143": {
+      "run_scores": {
+        "complexity": [
+          3,
+          3,
+          3
+        ],
+        "quality": [
+          5,
+          4,
+          4
+        ],
+        "risk": [
+          3,
+          3,
+          3
+        ],
+        "clarity": [
+          4,
+          4,
+          2
+        ]
+      },
+      "run_errors": []
+    },
+    "189": {
+      "run_scores": {
+        "complexity": [
+          1,
+          1,
+          1
+        ],
+        "quality": [
+          5,
+          5,
+          5
+        ],
+        "risk": [
+          1,
+          1,
+          1
+        ],
+        "clarity": [
+          3,
+          3,
+          3
+        ]
+      },
+      "run_errors": []
+    },
+    "142": {
+      "run_scores": {
+        "complexity": [
+          1,
+          1,
+          1
+        ],
+        "quality": [
+          3,
+          3,
+          3
+        ],
+        "risk": [
+          1,
+          1,
+          1
+        ],
+        "clarity": [
+          4,
+          4,
+          4
+        ]
+      },
+      "run_errors": []
+    },
+    "186": {
+      "run_scores": {
+        "complexity": [
+          5,
+          5,
+          5
+        ],
+        "quality": [
+          5,
+          5,
+          5
+        ],
+        "risk": [
+          2,
+          2,
+          2
+        ],
+        "clarity": [
+          4,
+          4,
+          4
+        ]
+      },
+      "run_errors": []
+    },
+    "173": {
+      "run_scores": {
+        "complexity": [
+          1,
+          1,
+          1
+        ],
+        "quality": [
+          5,
+          5,
+          5
+        ],
+        "risk": [
+          1,
+          1,
+          1
+        ],
+        "clarity": [
+          2,
+          2,
+          2
+        ]
+      },
+      "run_errors": []
+    },
+    "141": {
+      "run_scores": {
+        "complexity": [
+          3,
+          3,
+          3
+        ],
+        "quality": [
+          5,
+          5,
+          5
+        ],
+        "risk": [
+          2,
+          2,
+          2
+        ],
+        "clarity": [
+          2,
+          2,
+          2
+        ]
+      },
+      "run_errors": []
+    },
+    "140": {
+      "run_scores": {
+        "complexity": [
+          3,
+          3,
+          3
+        ],
+        "quality": [
+          5,
+          5,
+          5
+        ],
+        "risk": [
+          3,
+          3,
+          3
+        ],
+        "clarity": [
+          4,
+          4,
+          4
+        ]
+      },
+      "run_errors": []
+    },
+    "139": {
+      "run_scores": {
+        "complexity": [
+          3,
+          3,
+          3
+        ],
+        "quality": [
+          2,
+          2,
+          2
+        ],
+        "risk": [
+          5,
+          5,
+          5
+        ],
+        "clarity": [
+          4,
+          4,
+          4
+        ]
+      },
+      "run_errors": []
+    },
+    "187": {
+      "run_scores": {
+        "complexity": [
+          3,
+          3,
+          3
+        ],
+        "quality": [
+          4,
+          5,
+          5
+        ],
+        "risk": [
+          4,
+          5,
+          4
+        ],
+        "clarity": [
+          2,
+          2,
+          2
+        ]
+      },
+      "run_errors": []
+    },
+    "138": {
+      "run_scores": {
+        "complexity": [
+          1,
+          1,
+          1
+        ],
+        "quality": [
+          4,
+          4,
+          3
+        ],
+        "risk": [
+          1,
+          1,
+          1
+        ],
+        "clarity": [
+          4,
+          4,
+          4
+        ]
+      },
+      "run_errors": []
+    },
+    "137": {
+      "run_scores": {
+        "complexity": [
+          3,
+          3,
+          3
+        ],
+        "quality": [
+          4,
+          4,
+          4
+        ],
+        "risk": [
+          1,
+          1,
+          1
+        ],
+        "clarity": [
+          1,
+          1,
+          1
+        ]
+      },
+      "run_errors": []
+    },
+    "136": {
+      "run_scores": {
+        "complexity": [
+          3,
+          3,
+          3
+        ],
+        "quality": [
+          4,
+          4,
+          4
+        ],
+        "risk": [
+          1,
+          1,
+          1
+        ],
+        "clarity": [
+          2,
+          2,
+          2
+        ]
+      },
+      "run_errors": []
+    },
+    "135": {
+      "run_scores": {
+        "complexity": [
+          3,
+          3,
+          3
+        ],
+        "quality": [
+          4,
+          4,
+          4
+        ],
+        "risk": [
+          5,
+          5,
+          5
+        ],
+        "clarity": [
+          1,
+          1,
+          1
+        ]
+      },
+      "run_errors": []
+    },
+    "134": {
+      "run_scores": {
+        "complexity": [
+          3,
+          3,
+          3
+        ],
+        "quality": [
+          3,
+          3,
+          3
+        ],
+        "risk": [
+          4,
+          4,
+          4
+        ],
+        "clarity": [
+          4,
+          4,
+          4
+        ]
+      },
+      "run_errors": []
+    },
+    "133": {
+      "run_scores": {
+        "complexity": [
+          3,
+          3,
+          3
+        ],
+        "quality": [
+          4,
+          4,
+          4
+        ],
+        "risk": [
+          5,
+          5,
+          5
+        ],
+        "clarity": [
+          5,
+          4,
+          4
+        ]
+      },
+      "run_errors": []
+    },
+    "132": {
+      "run_scores": {
+        "complexity": [
+          2,
+          2,
+          2
+        ],
+        "quality": [
+          4,
+          4,
+          4
+        ],
+        "risk": [
+          1,
+          1,
+          1
+        ],
+        "clarity": [
+          4,
+          4,
+          4
+        ]
+      },
+      "run_errors": []
+    },
+    "131": {
+      "run_scores": {
+        "complexity": [
+          1,
+          1,
+          1
+        ],
+        "quality": [
+          3,
+          3,
+          3
+        ],
+        "risk": [
+          1,
+          1,
+          1
+        ],
+        "clarity": [
+          2,
+          2,
+          2
+        ]
+      },
+      "run_errors": []
+    },
+    "130": {
+      "run_scores": {
+        "complexity": [
+          3,
+          3,
+          3
+        ],
+        "quality": [
+          4,
+          4,
+          4
+        ],
+        "risk": [
+          1,
+          1,
+          1
+        ],
+        "clarity": [
+          4,
+          4,
+          4
+        ]
+      },
+      "run_errors": []
+    },
+    "129": {
+      "run_scores": {
+        "complexity": [
+          2,
+          2,
+          2
+        ],
+        "quality": [
+          4,
+          4,
+          4
+        ],
+        "risk": [
+          1,
+          1,
+          1
+        ],
+        "clarity": [
+          3,
+          2,
+          2
+        ]
+      },
+      "run_errors": []
+    },
+    "128": {
+      "run_scores": {
+        "complexity": [
+          1,
+          1,
+          1
+        ],
+        "quality": [
+          4,
+          4,
+          4
+        ],
+        "risk": [
+          1,
+          1,
+          1
+        ],
+        "clarity": [
+          4,
+          4,
+          4
+        ]
+      },
+      "run_errors": []
+    },
+    "127": {
+      "run_scores": {
+        "complexity": [
+          1,
+          1,
+          1
+        ],
+        "quality": [
+          5,
+          5,
+          5
+        ],
+        "risk": [
+          1,
+          1,
+          1
+        ],
+        "clarity": [
+          4,
+          4,
+          4
+        ]
+      },
+      "run_errors": []
+    },
+    "126": {
+      "run_scores": {
+        "complexity": [
+          1,
+          1,
+          1
+        ],
+        "quality": [
+          3,
+          3,
+          3
+        ],
+        "risk": [
+          1,
+          1,
+          1
+        ],
+        "clarity": [
+          1,
+          1,
+          1
+        ]
+      },
+      "run_errors": []
+    },
+    "125": {
+      "run_scores": {
+        "complexity": [
+          3,
+          3,
+          3
+        ],
+        "quality": [
+          5,
+          5,
+          5
+        ],
+        "risk": [
+          2,
+          2,
+          2
+        ],
+        "clarity": [
+          4,
+          4,
+          4
+        ]
+      },
+      "run_errors": []
+    },
+    "124": {
+      "run_scores": {
+        "complexity": [
+          4,
+          4,
+          4
+        ],
+        "quality": [
+          3,
+          3,
+          3
+        ],
+        "risk": [
+          5,
+          5,
+          5
+        ],
+        "clarity": [
+          4,
+          4,
+          4
+        ]
+      },
+      "run_errors": []
+    },
+    "123": {
+      "run_scores": {
+        "complexity": [
+          1,
+          1,
+          1
+        ],
+        "quality": [
+          4,
+          4,
+          4
+        ],
+        "risk": [
+          1,
+          1,
+          1
+        ],
+        "clarity": [
+          1,
+          1,
+          1
+        ]
+      },
+      "run_errors": []
+    },
+    "172": {
+      "run_scores": {
+        "complexity": [
+          1,
+          1,
+          1
+        ],
+        "quality": [
+          5,
+          5,
+          5
+        ],
+        "risk": [
+          1,
+          1,
+          1
+        ],
+        "clarity": [
+          3,
+          3,
+          3
+        ]
+      },
+      "run_errors": []
+    },
+    "122": {
+      "run_scores": {
+        "complexity": [
+          1,
+          1,
+          2
+        ],
+        "quality": [
+          3,
+          3,
+          3
+        ],
+        "risk": [
+          1,
+          1,
+          1
+        ],
+        "clarity": [
+          4,
+          4,
+          4
+        ]
+      },
+      "run_errors": []
+    },
+    "121": {
+      "run_scores": {
+        "complexity": [
+          3,
+          3,
+          3
+        ],
+        "quality": [
+          5,
+          5,
+          5
+        ],
+        "risk": [
+          1,
+          1,
+          1
+        ],
+        "clarity": [
+          4,
+          4,
+          4
+        ]
+      },
+      "run_errors": []
+    },
+    "120": {
+      "run_scores": {
+        "complexity": [
+          3,
+          3,
+          3
+        ],
+        "quality": [
+          5,
+          5,
+          5
+        ],
+        "risk": [
+          3,
+          3,
+          3
+        ],
+        "clarity": [
+          4,
+          4,
+          4
+        ]
+      },
+      "run_errors": []
+    },
+    "119": {
+      "run_scores": {
+        "complexity": [
+          1,
+          1,
+          1
+        ],
+        "quality": [
+          2,
+          2,
+          2
+        ],
+        "risk": [
+          1,
+          1,
+          1
+        ],
+        "clarity": [
+          4,
+          4,
+          4
+        ]
+      },
+      "run_errors": []
+    },
+    "118": {
+      "run_scores": {
+        "complexity": [
+          3,
+          3,
+          3
+        ],
+        "quality": [
+          4,
+          4,
+          4
+        ],
+        "risk": [
+          3,
+          3,
+          3
+        ],
+        "clarity": [
+          4,
+          4,
+          4
+        ]
+      },
+      "run_errors": []
+    },
+    "117": {
+      "run_scores": {
+        "complexity": [
+          1,
+          1,
+          2
+        ],
+        "quality": [
+          3,
+          3,
+          3
+        ],
+        "risk": [
+          1,
+          1,
+          1
+        ],
+        "clarity": [
+          4,
+          4,
+          4
+        ]
+      },
+      "run_errors": []
+    },
+    "116": {
+      "run_scores": {
+        "complexity": [
+          3,
+          3,
+          3
+        ],
+        "quality": [
+          3,
+          3,
+          3
+        ],
+        "risk": [
+          5,
+          5,
+          5
+        ],
+        "clarity": [
+          4,
+          4,
+          4
+        ]
+      },
+      "run_errors": []
+    },
+    "115": {
+      "run_scores": {
+        "complexity": [
+          2,
+          2,
+          2
+        ],
+        "quality": [
+          4,
+          4,
+          4
+        ],
+        "risk": [
+          1,
+          1,
+          1
+        ],
+        "clarity": [
+          4,
+          4,
+          4
+        ]
+      },
+      "run_errors": []
+    },
+    "114": {
+      "run_scores": {
+        "complexity": [
+          2,
+          2,
+          2
+        ],
+        "quality": [
+          4,
+          4,
+          4
+        ],
+        "risk": [
+          1,
+          1,
+          1
+        ],
+        "clarity": [
+          4,
+          4,
+          4
+        ]
+      },
+      "run_errors": []
+    },
+    "171": {
+      "run_scores": {
+        "complexity": [
+          1,
+          1,
+          1
+        ],
+        "quality": [
+          5,
+          5,
+          5
+        ],
+        "risk": [
+          1,
+          1,
+          1
+        ],
+        "clarity": [
+          3,
+          3,
+          3
+        ]
+      },
+      "run_errors": []
+    },
+    "113": {
+      "run_scores": {
+        "complexity": [
+          4,
+          4,
+          4
+        ],
+        "quality": [
+          3,
+          3,
+          3
+        ],
+        "risk": [
+          2,
+          2,
+          2
+        ],
+        "clarity": [
+          4,
+          4,
+          4
+        ]
+      },
+      "run_errors": []
+    },
+    "112": {
+      "run_scores": {
+        "complexity": [
+          3,
+          3,
+          3
+        ],
+        "quality": [
+          4,
+          4,
+          4
+        ],
+        "risk": [
+          1,
+          1,
+          1
+        ],
+        "clarity": [
+          4,
+          4,
+          4
+        ]
+      },
+      "run_errors": []
+    },
+    "111": {
+      "run_scores": {
+        "complexity": [
+          3,
+          3,
+          3
+        ],
+        "quality": [
+          4,
+          4,
+          4
+        ],
+        "risk": [
+          4,
+          4,
+          4
+        ],
+        "clarity": [
+          4,
+          4,
+          4
+        ]
+      },
+      "run_errors": []
+    },
+    "110": {
+      "run_scores": {
+        "complexity": [
+          1,
+          1,
+          1
+        ],
+        "quality": [
+          2,
+          2,
+          2
+        ],
+        "risk": [
+          1,
+          1,
+          1
+        ],
+        "clarity": [
+          4,
+          4,
+          4
+        ]
+      },
+      "run_errors": []
+    },
+    "170": {
+      "run_scores": {
+        "complexity": [
+          1,
+          1,
+          1
+        ],
+        "quality": [
+          5,
+          5,
+          5
+        ],
+        "risk": [
+          1,
+          1,
+          1
+        ],
+        "clarity": [
+          3,
+          3,
+          3
+        ]
+      },
+      "run_errors": []
+    },
+    "109": {
+      "run_scores": {
+        "complexity": [
+          1,
+          1,
+          1
+        ],
+        "quality": [
+          3,
+          3,
+          3
+        ],
+        "risk": [
+          1,
+          1,
+          1
+        ],
+        "clarity": [
+          1,
+          1,
+          1
+        ]
+      },
+      "run_errors": []
+    },
+    "108": {
+      "run_scores": {
+        "complexity": [
+          3,
+          3,
+          3
+        ],
+        "quality": [
+          5,
+          4,
+          4
+        ],
+        "risk": [
+          1,
+          1,
+          1
+        ],
+        "clarity": [
+          1,
+          1,
+          1
+        ]
+      },
+      "run_errors": []
+    }
+  }
+}

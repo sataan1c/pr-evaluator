@@ -1,0 +1,14 @@
+{
+  "period_start": "2026-06-23T00:34:59Z",
+  "merged_before": {
+    "alina": 3,
+    "bahruz": 6,
+    "chingiz": 22,
+    "dilara": 35,
+    "elvin": 48,
+    "farid": 120,
+    "gunel": 210,
+    "hasan": 0
+  },
+  "repo": "demo/shop"
+}

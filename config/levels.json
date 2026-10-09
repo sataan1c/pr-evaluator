@@ -1,0 +1,28 @@
+{
+  "_comment": "Нормы уровней и правила множителя. Всё, что здесь задано, можно менять без правки кода.",
+
+  "level_by_merged_before": [
+    {"level": "junior", "max": 9},
+    {"level": "middle", "max": 50},
+    {"level": "senior", "max": null}
+  ],
+  "level_overrides": {},
+  "default_level": "middle",
+
+  "weights": {
+    "junior": {"complexity": 0.2, "quality": 0.5, "clarity": 0.3},
+    "middle": {"complexity": 0.4, "quality": 0.4, "clarity": 0.2},
+    "senior": {"complexity": 0.5, "quality": 0.3, "clarity": 0.2}
+  },
+  "norms": {"junior": 2.6, "middle": 3.2, "senior": 3.8},
+  "calibrate_norms": "auto",
+  "calibrate_min_authors": 5,
+
+  "multiplier": {"min": 0.9, "max": 1.15, "slope": 0.5},
+  "min_prs": 3,
+
+  "small_pr_lines": 20,
+  "small_pr_share": 0.6,
+  "small_pr_min_count": 5,
+  "unstable_share": 0.3
+}

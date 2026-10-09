@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Карта вклада</title>
+<link rel="stylesheet" href="styles.css">
+<script>
+  // Тема ставится до отрисовки, чтобы страница не мигала светлым фоном.
+  try { var t = localStorage.getItem("pr-impact-theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+</script>
+</head>
+<body>
+<a class="skip" href="#main" data-i18n="skip">К содержимому</a>
+
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="#/team">
+      <span class="brand-name" data-i18n="brand">Карта вклада</span>
+      <span class="brand-repo" id="repo-name"></span>
+    </a>
+    <nav class="tabs" aria-label="Разделы" data-i18n-attr="aria-label:nav.aria">
+      <a href="#/team" data-tab="team" data-i18n="nav.team">Команда</a>
+      <a href="#/prs" data-tab="prs" data-i18n="nav.prs">Pull requests</a>
+      <a href="#/check" data-tab="check" data-i18n="nav.check">Проверка метода</a>
+    </nav>
+    <div class="tools">
+      <div class="lang" role="group" aria-label="Язык интерфейса" data-i18n-attr="aria-label:lang.aria">
+        <button type="button" data-lang="az" lang="az" title="Azərbaycan dili">AZ</button>
+        <button type="button" data-lang="ru" lang="ru" title="Русский">RU</button>
+        <button type="button" data-lang="en" lang="en" title="English">EN</button>
+      </div>
+      <button type="button" class="btn quiet" id="theme-toggle">Тёмная тема</button>
+      <button type="button" class="btn" id="data-open" data-i18n="data.open">Данные</button>
+    </div>
+  </div>
+</header>
+
+<div class="stub-banner" id="stub-banner" hidden data-i18n="stub"></div>
+
+<main id="main" tabindex="-1"></main>
+
+<footer class="foot" data-i18n="foot"></footer>
+
+<dialog id="data-dialog" aria-labelledby="data-title">
+  <form method="dialog" class="dialog-in">
+    <h2 id="data-title" data-i18n="dialog.title">Данные</h2>
+    <p class="dialog-lead" data-i18n="dialog.lead"></p>
+    <label class="drop" id="drop-zone">
+      <input type="file" id="file-input" accept=".json,application/json" multiple>
+      <span class="drop-title" data-i18n="dialog.drop">Выбрать файлы JSON</span>
+      <span class="drop-hint">prs, scores, metrics, outcomes, validation, run_stats, author_history, levels</span>
+    </label>
+    <ul class="file-list" id="file-list"></ul>
+    <p class="dialog-note" data-i18n="dialog.note"></p>
+    <div class="dialog-actions">
+      <button class="btn" value="close" data-i18n="dialog.close">Закрыть</button>
+    </div>
+  </form>
+</dialog>
+
+<div class="tip" id="tip" role="tooltip" hidden></div>
+
+<script src="i18n.js"></script>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,3024 @@
+[
+  {
+    "number": 164,
+    "summary": "Заглушка модели: «Tune profile timeouts».",
+    "scores": {
+      "complexity": {
+        "score": 2,
+        "reason": "Заглушка: изменено 20 строк в 1 показанных файлах.",
+        "evidence": [
+          {
+            "path": "config/profile.yaml",
+            "lines": "144-152"
+          }
+        ]
+      },
+      "quality": {
+        "score": 3,
+        "reason": "Заглушка: тесты не найдены, CI: success.",
+        "evidence": [
+          {
+            "path": "config/profile.yaml",
+            "lines": "144-152"
+          }
+        ]
+      },
+      "risk": {
+        "score": 1,
+        "reason": "Заглушка: опасных мест по путям и коду не видно.",
+        "evidence": [
+          {
+            "path": "config/profile.yaml",
+            "lines": "144-152"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 4,
+        "reason": "Заглушка: в описании 44 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 163,
+    "summary": "Заглушка модели: «Make the coupons queue thread-safe».",
+    "scores": {
+      "complexity": {
+        "score": 3,
+        "reason": "Заглушка: изменено 96 строк в 2 показанных файлах.",
+        "evidence": [
+          {
+            "path": "src/worker/coupons_queue.py",
+            "lines": "166-174"
+          }
+        ]
+      },
+      "quality": {
+        "score": 3,
+        "reason": "Заглушка: тесты не найдены, CI: success.",
+        "evidence": [
+          {
+            "path": "src/worker/locks.py",
+            "lines": "148-156"
+          }
+        ]
+      },
+      "risk": {
+        "score": 5,
+        "reason": "Заглушка: затронуты миграции, авторизация или блокировки.",
+        "evidence": [
+          {
+            "path": "src/worker/coupons_queue.py",
+            "lines": "166-174"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 1,
+        "reason": "Заглушка: в описании 1 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 178,
+    "summary": "Заглушка модели: «Revert \"Add bulk actions to search (#161)\"».",
+    "scores": {
+      "complexity": {
+        "score": 1,
+        "reason": "Заглушка: изменено 14 строк в 2 показанных файлах.",
+        "evidence": [
+          {
+            "path": "src/cart.py",
+            "lines": "156-163"
+          }
+        ]
+      },
+      "quality": {
+        "score": 5,
+        "reason": "Заглушка: тесты есть, CI: success.",
+        "evidence": [
+          {
+            "path": "tests/test_cart.py",
+            "lines": "32-39"
+          }
+        ]
+      },
+      "risk": {
+        "score": 1,
+        "reason": "Заглушка: опасных мест по путям и коду не видно.",
+        "evidence": [
+          {
+            "path": "src/cart.py",
+            "lines": "156-163"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 2,
+        "reason": "Заглушка: в описании 7 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 162,
+    "summary": "Заглушка модели: «Simplify invoice loading».",
+    "scores": {
+      "complexity": {
+        "score": 3,
+        "reason": "Заглушка: изменено 76 строк в 2 показанных файлах.",
+        "evidence": [
+          {
+            "path": "tests/test_invoice.py",
+            "lines": "82-90"
+          }
+        ]
+      },
+      "quality": {
+        "score": 5,
+        "reason": "Заглушка: тесты есть, CI: success.",
+        "evidence": [
+          {
+            "path": "src/invoice.py",
+            "lines": "155-163"
+          }
+        ]
+      },
+      "risk": {
+        "score": 1,
+        "reason": "Заглушка: опасных мест по путям и коду не видно.",
+        "evidence": [
+          {
+            "path": "tests/test_invoice.py",
+            "lines": "82-90"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 4,
+        "reason": "Заглушка: в описании 44 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": true
+  },
+  {
+    "number": 161,
+    "summary": "Заглушка модели: «Add bulk actions to search».",
+    "scores": {
+      "complexity": {
+        "score": 4,
+        "reason": "Заглушка: изменено 133 строк в 3 показанных файлах.",
+        "evidence": [
+          {
+            "path": "tests/test_search.py",
+            "lines": "100-108"
+          }
+        ]
+      },
+      "quality": {
+        "score": 4,
+        "reason": "Заглушка: тесты есть, CI: unknown.",
+        "evidence": [
+          {
+            "path": "src/search.py",
+            "lines": "71-79"
+          }
+        ]
+      },
+      "risk": {
+        "score": 2,
+        "reason": "Заглушка: опасных мест по путям и коду не видно.",
+        "evidence": [
+          {
+            "path": "src/search_service.py",
+            "lines": "99-107"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 1,
+        "reason": "Заглушка: в описании 1 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 160,
+    "summary": "Заглушка модели: «Archive closed refunds rows».",
+    "scores": {
+      "complexity": {
+        "score": 3,
+        "reason": "Заглушка: изменено 84 строк в 2 показанных файлах.",
+        "evidence": [
+          {
+            "path": "src/models/refunds.py",
+            "lines": "129-137"
+          }
+        ]
+      },
+      "quality": {
+        "score": 4,
+        "reason": "Заглушка: тесты не найдены, CI: success.",
+        "evidence": [
+          {
+            "path": "migrations/0085_refunds.sql",
+            "lines": "73-81"
+          }
+        ]
+      },
+      "risk": {
+        "score": 5,
+        "reason": "Заглушка: затронуты миграции, авторизация или блокировки.",
+        "evidence": [
+          {
+            "path": "src/models/refunds.py",
+            "lines": "129-137"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 4,
+        "reason": "Заглушка: в описании 45 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 159,
+    "summary": "Заглушка модели: «Simplify refunds loading».",
+    "scores": {
+      "complexity": {
+        "score": 3,
+        "reason": "Заглушка: изменено 55 строк в 2 показанных файлах.",
+        "evidence": [
+          {
+            "path": "src/refunds.py",
+            "lines": "27-35"
+          }
+        ]
+      },
+      "quality": {
+        "score": 4,
+        "reason": "Заглушка: тесты есть, CI: success.",
+        "evidence": [
+          {
+            "path": "tests/test_refunds.py",
+            "lines": "157-165"
+          }
+        ]
+      },
+      "risk": {
+        "score": 1,
+        "reason": "Заглушка: опасных мест по путям и коду не видно.",
+        "evidence": [
+          {
+            "path": "src/refunds.py",
+            "lines": "27-35"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 1,
+        "reason": "Заглушка: в описании 0 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 158,
+    "summary": "Заглушка модели: «Add bulk actions to orders».",
+    "scores": {
+      "complexity": {
+        "score": 3,
+        "reason": "Заглушка: изменено 79 строк в 3 показанных файлах.",
+        "evidence": [
+          {
+            "path": "src/orders_service.py",
+            "lines": "102-110"
+          }
+        ]
+      },
+      "quality": {
+        "score": 4,
+        "reason": "Заглушка: тесты есть, CI: success.",
+        "evidence": [
+          {
+            "path": "tests/test_orders.py",
+            "lines": "138-146"
+          }
+        ]
+      },
+      "risk": {
+        "score": 1,
+        "reason": "Заглушка: опасных мест по путям и коду не видно.",
+        "evidence": [
+          {
+            "path": "src/orders.py",
+            "lines": "34-42"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 1,
+        "reason": "Заглушка: в описании 1 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 177,
+    "summary": "Заглушка модели: «Fix crash after archive closed checkout rows».",
+    "scores": {
+      "complexity": {
+        "score": 2,
+        "reason": "Заглушка: изменено 20 строк в 2 показанных файлах.",
+        "evidence": [
+          {
+            "path": "tests/test_cart.py",
+            "lines": "109-117"
+          }
+        ]
+      },
+      "quality": {
+        "score": 5,
+        "reason": "Заглушка: тесты есть, CI: success.",
+        "evidence": [
+          {
+            "path": "src/cart.py",
+            "lines": "65-73"
+          }
+        ]
+      },
+      "risk": {
+        "score": 1,
+        "reason": "Заглушка: опасных мест по путям и коду не видно.",
+        "evidence": [
+          {
+            "path": "tests/test_cart.py",
+            "lines": "109-117"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 3,
+        "reason": "Заглушка: в описании 10 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 183,
+    "summary": "Заглушка модели: «Fix flaky search test».",
+    "scores": {
+      "complexity": {
+        "score": 1,
+        "reason": "Заглушка: изменено 12 строк в 2 показанных файлах.",
+        "evidence": [
+          {
+            "path": "src/cart.py",
+            "lines": "124-130"
+          }
+        ]
+      },
+      "quality": {
+        "score": 5,
+        "reason": "Заглушка: тесты есть, CI: success.",
+        "evidence": [
+          {
+            "path": "tests/test_cart.py",
+            "lines": "139-145"
+          }
+        ]
+      },
+      "risk": {
+        "score": 1,
+        "reason": "Заглушка: опасных мест по путям и коду не видно.",
+        "evidence": [
+          {
+            "path": "src/cart.py",
+            "lines": "124-130"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 2,
+        "reason": "Заглушка: в описании 6 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 157,
+    "summary": "Заглушка модели: «Simplify refunds loading».",
+    "scores": {
+      "complexity": {
+        "score": 2,
+        "reason": "Заглушка: изменено 50 строк в 2 показанных файлах.",
+        "evidence": [
+          {
+            "path": "tests/test_refunds.py",
+            "lines": "177-185"
+          }
+        ]
+      },
+      "quality": {
+        "score": 5,
+        "reason": "Заглушка: тесты есть, CI: success.",
+        "evidence": [
+          {
+            "path": "src/refunds.py",
+            "lines": "93-101"
+          }
+        ]
+      },
+      "risk": {
+        "score": 1,
+        "reason": "Заглушка: опасных мест по путям и коду не видно.",
+        "evidence": [
+          {
+            "path": "tests/test_refunds.py",
+            "lines": "177-185"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 2,
+        "reason": "Заглушка: в описании 3 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 156,
+    "summary": "Заглушка модели: «Document the stock settings».",
+    "scores": {
+      "complexity": {
+        "score": 2,
+        "reason": "Заглушка: изменено 23 строк в 1 показанных файлах.",
+        "evidence": [
+          {
+            "path": "docs/stock.md",
+            "lines": "27-35"
+          }
+        ]
+      },
+      "quality": {
+        "score": 3,
+        "reason": "Заглушка: тесты не найдены, CI: mixed.",
+        "evidence": [
+          {
+            "path": "docs/stock.md",
+            "lines": "27-35"
+          }
+        ]
+      },
+      "risk": {
+        "score": 1,
+        "reason": "Заглушка: опасных мест по путям и коду не видно.",
+        "evidence": [
+          {
+            "path": "docs/stock.md",
+            "lines": "27-35"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 4,
+        "reason": "Заглушка: в описании 45 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 155,
+    "summary": "Заглушка модели: «Make the profile queue thread-safe».",
+    "scores": {
+      "complexity": {
+        "score": 3,
+        "reason": "Заглушка: изменено 112 строк в 2 показанных файлах.",
+        "evidence": [
+          {
+            "path": "src/worker/profile_queue.py",
+            "lines": "111-119"
+          }
+        ]
+      },
+      "quality": {
+        "score": 3,
+        "reason": "Заглушка: тесты не найдены, CI: success.",
+        "evidence": [
+          {
+            "path": "src/worker/locks.py",
+            "lines": "169-177"
+          }
+        ]
+      },
+      "risk": {
+        "score": 5,
+        "reason": "Заглушка: затронуты миграции, авторизация или блокировки.",
+        "evidence": [
+          {
+            "path": "src/worker/profile_queue.py",
+            "lines": "111-119"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 4,
+        "reason": "Заглушка: в описании 46 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": true
+  },
+  {
+    "number": 154,
+    "summary": "Заглушка модели: «Archive closed checkout rows».",
+    "scores": {
+      "complexity": {
+        "score": 3,
+        "reason": "Заглушка: изменено 99 строк в 2 показанных файлах.",
+        "evidence": [
+          {
+            "path": "src/models/checkout.py",
+            "lines": "96-104"
+          }
+        ]
+      },
+      "quality": {
+        "score": 4,
+        "reason": "Заглушка: тесты не найдены, CI: success.",
+        "evidence": [
+          {
+            "path": "migrations/0067_checkout.sql",
+            "lines": "11-19"
+          }
+        ]
+      },
+      "risk": {
+        "score": 5,
+        "reason": "Заглушка: затронуты миграции, авторизация или блокировки.",
+        "evidence": [
+          {
+            "path": "src/models/checkout.py",
+            "lines": "96-104"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 4,
+        "reason": "Заглушка: в описании 45 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 153,
+    "summary": "Заглушка модели: «Make the pricing queue thread-safe».",
+    "scores": {
+      "complexity": {
+        "score": 3,
+        "reason": "Заглушка: изменено 105 строк в 2 показанных файлах.",
+        "evidence": [
+          {
+            "path": "src/worker/pricing_queue.py",
+            "lines": "178-186"
+          }
+        ]
+      },
+      "quality": {
+        "score": 3,
+        "reason": "Заглушка: тесты не найдены, CI: mixed.",
+        "evidence": [
+          {
+            "path": "src/worker/locks.py",
+            "lines": "29-37"
+          }
+        ]
+      },
+      "risk": {
+        "score": 5,
+        "reason": "Заглушка: затронуты миграции, авторизация или блокировки.",
+        "evidence": [
+          {
+            "path": "src/worker/pricing_queue.py",
+            "lines": "178-186"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 2,
+        "reason": "Заглушка: в описании 3 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 152,
+    "summary": "Заглушка модели: «Tune profile timeouts».",
+    "scores": {
+      "complexity": {
+        "score": 1,
+        "reason": "Заглушка: изменено 6 строк в 1 показанных файлах.",
+        "evidence": [
+          {
+            "path": "config/profile.yaml",
+            "lines": "97-103"
+          }
+        ]
+      },
+      "quality": {
+        "score": 4,
+        "reason": "Заглушка: тесты не найдены, CI: success.",
+        "evidence": [
+          {
+            "path": "config/profile.yaml",
+            "lines": "97-103"
+          }
+        ]
+      },
+      "risk": {
+        "score": 1,
+        "reason": "Заглушка: опасных мест по путям и коду не видно.",
+        "evidence": [
+          {
+            "path": "config/profile.yaml",
+            "lines": "97-103"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 1,
+        "reason": "Заглушка: в описании 1 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 151,
+    "summary": "Заглушка модели: «Tune coupons timeouts».",
+    "scores": {
+      "complexity": {
+        "score": 1,
+        "reason": "Заглушка: изменено 10 строк в 1 показанных файлах.",
+        "evidence": [
+          {
+            "path": "config/coupons.yaml",
+            "lines": "46-54"
+          }
+        ]
+      },
+      "quality": {
+        "score": 4,
+        "reason": "Заглушка: тесты не найдены, CI: success.",
+        "evidence": [
+          {
+            "path": "config/coupons.yaml",
+            "lines": "46-54"
+          }
+        ]
+      },
+      "risk": {
+        "score": 1,
+        "reason": "Заглушка: опасных мест по путям и коду не видно.",
+        "evidence": [
+          {
+            "path": "config/coupons.yaml",
+            "lines": "46-54"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 4,
+        "reason": "Заглушка: в описании 44 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 176,
+    "summary": "Заглушка модели: «Fix crash after make the orders queue thread-safe».",
+    "scores": {
+      "complexity": {
+        "score": 2,
+        "reason": "Заглушка: изменено 20 строк в 2 показанных файлах.",
+        "evidence": [
+          {
+            "path": "tests/test_cart.py",
+            "lines": "89-97"
+          }
+        ]
+      },
+      "quality": {
+        "score": 5,
+        "reason": "Заглушка: тесты есть, CI: success.",
+        "evidence": [
+          {
+            "path": "src/cart.py",
+            "lines": "33-41"
+          }
+        ]
+      },
+      "risk": {
+        "score": 1,
+        "reason": "Заглушка: опасных мест по путям и коду не видно.",
+        "evidence": [
+          {
+            "path": "tests/test_cart.py",
+            "lines": "89-97"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 3,
+        "reason": "Заглушка: в описании 10 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 150,
+    "summary": "Заглушка модели: «Simplify refunds loading».",
+    "scores": {
+      "complexity": {
+        "score": 3,
+        "reason": "Заглушка: изменено 53 строк в 2 показанных файлах.",
+        "evidence": [
+          {
+            "path": "src/refunds.py",
+            "lines": "31-39"
+          }
+        ]
+      },
+      "quality": {
+        "score": 5,
+        "reason": "Заглушка: тесты есть, CI: success.",
+        "evidence": [
+          {
+            "path": "tests/test_refunds.py",
+            "lines": "38-46"
+          }
+        ]
+      },
+      "risk": {
+        "score": 1,
+        "reason": "Заглушка: опасных мест по путям и коду не видно.",
+        "evidence": [
+          {
+            "path": "src/refunds.py",
+            "lines": "31-39"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 1,
+        "reason": "Заглушка: в описании 1 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 149,
+    "summary": "Заглушка модели: «Make the cart queue thread-safe».",
+    "scores": {
+      "complexity": {
+        "score": 3,
+        "reason": "Заглушка: изменено 77 строк в 2 показанных файлах.",
+        "evidence": [
+          {
+            "path": "src/worker/locks.py",
+            "lines": "148-156"
+          }
+        ]
+      },
+      "quality": {
+        "score": 4,
+        "reason": "Заглушка: тесты не найдены, CI: success.",
+        "evidence": [
+          {
+            "path": "src/worker/cart_queue.py",
+            "lines": "165-173"
+          }
+        ]
+      },
+      "risk": {
+        "score": 4,
+        "reason": "Заглушка: затронуты миграции, авторизация или блокировки.",
+        "evidence": [
+          {
+            "path": "src/worker/locks.py",
+            "lines": "148-156"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 4,
+        "reason": "Заглушка: в описании 46 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 148,
+    "summary": "Заглушка модели: «Add bulk actions to pricing».",
+    "scores": {
+      "complexity": {
+        "score": 3,
+        "reason": "Заглушка: изменено 102 строк в 3 показанных файлах.",
+        "evidence": [
+          {
+            "path": "tests/test_pricing.py",
+            "lines": "180-188"
+          }
+        ]
+      },
+      "quality": {
+        "score": 3,
+        "reason": "Заглушка: тесты есть, CI: unknown.",
+        "evidence": [
+          {
+            "path": "src/pricing.py",
+            "lines": "52-60"
+          }
+        ]
+      },
+      "risk": {
+        "score": 2,
+        "reason": "Заглушка: опасных мест по путям и коду не видно.",
+        "evidence": [
+          {
+            "path": "src/pricing_service.py",
+            "lines": "41-49"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 4,
+        "reason": "Заглушка: в описании 46 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 147,
+    "summary": "Заглушка модели: «Archive closed profile rows».",
+    "scores": {
+      "complexity": {
+        "score": 3,
+        "reason": "Заглушка: изменено 85 строк в 2 показанных файлах.",
+        "evidence": [
+          {
+            "path": "src/models/profile.py",
+            "lines": "99-107"
+          }
+        ]
+      },
+      "quality": {
+        "score": 3,
+        "reason": "Заглушка: тесты не найдены, CI: success.",
+        "evidence": [
+          {
+            "path": "migrations/0013_profile.sql",
+            "lines": "103-111"
+          }
+        ]
+      },
+      "risk": {
+        "score": 5,
+        "reason": "Заглушка: затронуты миграции, авторизация или блокировки.",
+        "evidence": [
+          {
+            "path": "src/models/profile.py",
+            "lines": "99-107"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 1,
+        "reason": "Заглушка: в описании 1 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": true
+  },
+  {
+    "number": 175,
+    "summary": "Заглушка модели: «Revert \"Rotate session tokens for search\"».",
+    "scores": {
+      "complexity": {
+        "score": 1,
+        "reason": "Заглушка: изменено 14 строк в 2 показанных файлах.",
+        "evidence": [
+          {
+            "path": "src/cart.py",
+            "lines": "104-111"
+          }
+        ]
+      },
+      "quality": {
+        "score": 5,
+        "reason": "Заглушка: тесты есть, CI: success.",
+        "evidence": [
+          {
+            "path": "tests/test_cart.py",
+            "lines": "134-141"
+          }
+        ]
+      },
+      "risk": {
+        "score": 1,
+        "reason": "Заглушка: опасных мест по путям и коду не видно.",
+        "evidence": [
+          {
+            "path": "src/cart.py",
+            "lines": "104-111"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 1,
+        "reason": "Заглушка: в описании 0 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 146,
+    "summary": "Заглушка модели: «Make the orders queue thread-safe».",
+    "scores": {
+      "complexity": {
+        "score": 3,
+        "reason": "Заглушка: изменено 90 строк в 2 показанных файлах.",
+        "evidence": [
+          {
+            "path": "src/worker/locks.py",
+            "lines": "106-114"
+          }
+        ]
+      },
+      "quality": {
+        "score": 2,
+        "reason": "Заглушка: тесты не найдены, CI: mixed.",
+        "evidence": [
+          {
+            "path": "src/worker/orders_queue.py",
+            "lines": "46-54"
+          }
+        ]
+      },
+      "risk": {
+        "score": 5,
+        "reason": "Заглушка: затронуты миграции, авторизация или блокировки.",
+        "evidence": [
+          {
+            "path": "src/worker/locks.py",
+            "lines": "106-114"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 4,
+        "reason": "Заглушка: в описании 46 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 145,
+    "summary": "Заглушка модели: «Add bulk actions to refunds».",
+    "scores": {
+      "complexity": {
+        "score": 3,
+        "reason": "Заглушка: изменено 113 строк в 3 показанных файлах.",
+        "evidence": [
+          {
+            "path": "src/refunds_service.py",
+            "lines": "24-32"
+          }
+        ]
+      },
+      "quality": {
+        "score": 4,
+        "reason": "Заглушка: тесты есть, CI: unknown.",
+        "evidence": [
+          {
+            "path": "tests/test_refunds.py",
+            "lines": "166-174"
+          }
+        ]
+      },
+      "risk": {
+        "score": 2,
+        "reason": "Заглушка: опасных мест по путям и коду не видно.",
+        "evidence": [
+          {
+            "path": "src/refunds.py",
+            "lines": "60-68"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 4,
+        "reason": "Заглушка: в описании 46 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 174,
+    "summary": "Заглушка модели: «Revert \"Rotate session tokens for coupons\"».",
+    "scores": {
+      "complexity": {
+        "score": 1,
+        "reason": "Заглушка: изменено 14 строк в 2 показанных файлах.",
+        "evidence": [
+          {
+            "path": "src/cart.py",
+            "lines": "159-166"
+          }
+        ]
+      },
+      "quality": {
+        "score": 5,
+        "reason": "Заглушка: тесты есть, CI: success.",
+        "evidence": [
+          {
+            "path": "tests/test_cart.py",
+            "lines": "58-65"
+          }
+        ]
+      },
+      "risk": {
+        "score": 1,
+        "reason": "Заглушка: опасных мест по путям и коду не видно.",
+        "evidence": [
+          {
+            "path": "src/cart.py",
+            "lines": "159-166"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 1,
+        "reason": "Заглушка: в описании 0 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 144,
+    "summary": "Заглушка модели: «Rotate session tokens for search».",
+    "scores": {
+      "complexity": {
+        "score": 3,
+        "reason": "Заглушка: изменено 79 строк в 3 показанных файлах.",
+        "evidence": [
+          {
+            "path": "tests/test_auth_search.py",
+            "lines": "139-147"
+          }
+        ]
+      },
+      "quality": {
+        "score": 4,
+        "reason": "Заглушка: тесты есть, CI: success.",
+        "evidence": [
+          {
+            "path": "src/auth/search.py",
+            "lines": "20-28"
+          }
+        ]
+      },
+      "risk": {
+        "score": 3,
+        "reason": "Заглушка: затронуты миграции, авторизация или блокировки.",
+        "evidence": [
+          {
+            "path": "src/auth/session.py",
+            "lines": "33-41"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 4,
+        "reason": "Заглушка: в описании 46 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 143,
+    "summary": "Заглушка модели: «Rotate session tokens for coupons».",
+    "scores": {
+      "complexity": {
+        "score": 3,
+        "reason": "Заглушка: изменено 76 строк в 3 показанных файлах.",
+        "evidence": [
+          {
+            "path": "tests/test_auth_coupons.py",
+            "lines": "131-139"
+          }
+        ]
+      },
+      "quality": {
+        "score": 4,
+        "reason": "Заглушка: тесты есть, CI: mixed.",
+        "evidence": [
+          {
+            "path": "src/auth/coupons.py",
+            "lines": "10-18"
+          }
+        ]
+      },
+      "risk": {
+        "score": 3,
+        "reason": "Заглушка: затронуты миграции, авторизация или блокировки.",
+        "evidence": [
+          {
+            "path": "src/auth/session.py",
+            "lines": "10-18"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 4,
+        "reason": "Заглушка: в описании 46 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": true
+  },
+  {
+    "number": 189,
+    "summary": "Заглушка модели: «Revert \"Revert \"Archive closed orders rows (#139)\"\"».",
+    "scores": {
+      "complexity": {
+        "score": 1,
+        "reason": "Заглушка: изменено 14 строк в 2 показанных файлах.",
+        "evidence": [
+          {
+            "path": "tests/test_cart.py",
+            "lines": "43-50"
+          }
+        ]
+      },
+      "quality": {
+        "score": 5,
+        "reason": "Заглушка: тесты есть, CI: success.",
+        "evidence": [
+          {
+            "path": "src/cart.py",
+            "lines": "135-142"
+          }
+        ]
+      },
+      "risk": {
+        "score": 1,
+        "reason": "Заглушка: опасных мест по путям и коду не видно.",
+        "evidence": [
+          {
+            "path": "tests/test_cart.py",
+            "lines": "43-50"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 3,
+        "reason": "Заглушка: в описании 9 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 142,
+    "summary": "Заглушка модели: «Tune orders timeouts».",
+    "scores": {
+      "complexity": {
+        "score": 1,
+        "reason": "Заглушка: изменено 6 строк в 1 показанных файлах.",
+        "evidence": [
+          {
+            "path": "config/orders.yaml",
+            "lines": "131-137"
+          }
+        ]
+      },
+      "quality": {
+        "score": 3,
+        "reason": "Заглушка: тесты не найдены, CI: success.",
+        "evidence": [
+          {
+            "path": "config/orders.yaml",
+            "lines": "131-137"
+          }
+        ]
+      },
+      "risk": {
+        "score": 1,
+        "reason": "Заглушка: опасных мест по путям и коду не видно.",
+        "evidence": [
+          {
+            "path": "config/orders.yaml",
+            "lines": "131-137"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 4,
+        "reason": "Заглушка: в описании 44 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 186,
+    "summary": "Заглушка модели: «Import the new catalog format».",
+    "scores": {
+      "complexity": {
+        "score": 5,
+        "reason": "Заглушка: изменено 14805 строк в 4 показанных файлах.",
+        "evidence": [
+          {
+            "path": "src/catalog.py",
+            "lines": "115-123"
+          }
+        ]
+      },
+      "quality": {
+        "score": 5,
+        "reason": "Заглушка: тесты есть, CI: success.",
+        "evidence": [
+          {
+            "path": "src/catalog_service.py",
+            "lines": "123-131"
+          }
+        ]
+      },
+      "risk": {
+        "score": 2,
+        "reason": "Заглушка: опасных мест по путям и коду не видно.",
+        "evidence": [
+          {
+            "path": "tests/test_catalog.py",
+            "lines": "153-161"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 4,
+        "reason": "Заглушка: в описании 46 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 173,
+    "summary": "Заглушка модели: «Revert \"Archive closed orders rows (#139)\"».",
+    "scores": {
+      "complexity": {
+        "score": 1,
+        "reason": "Заглушка: изменено 14 строк в 2 показанных файлах.",
+        "evidence": [
+          {
+            "path": "tests/test_cart.py",
+            "lines": "16-23"
+          }
+        ]
+      },
+      "quality": {
+        "score": 5,
+        "reason": "Заглушка: тесты есть, CI: success.",
+        "evidence": [
+          {
+            "path": "src/cart.py",
+            "lines": "38-45"
+          }
+        ]
+      },
+      "risk": {
+        "score": 1,
+        "reason": "Заглушка: опасных мест по путям и коду не видно.",
+        "evidence": [
+          {
+            "path": "tests/test_cart.py",
+            "lines": "16-23"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 2,
+        "reason": "Заглушка: в описании 7 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 141,
+    "summary": "Заглушка модели: «Add bulk actions to shipping».",
+    "scores": {
+      "complexity": {
+        "score": 3,
+        "reason": "Заглушка: изменено 98 строк в 3 показанных файлах.",
+        "evidence": [
+          {
+            "path": "src/shipping_service.py",
+            "lines": "126-134"
+          },
+          {
+            "path": "src/shipping.py",
+            "lines": ""
+          }
+        ]
+      },
+      "quality": {
+        "score": 5,
+        "reason": "Заглушка: тесты есть, CI: success.",
+        "evidence": [
+          {
+            "path": "tests/test_shipping.py",
+            "lines": "18-26"
+          }
+        ]
+      },
+      "risk": {
+        "score": 2,
+        "reason": "Заглушка: опасных мест по путям и коду не видно.",
+        "evidence": [
+          {
+            "path": "src/shipping.py",
+            "lines": "161-169"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 2,
+        "reason": "Заглушка: в описании 3 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 140,
+    "summary": "Заглушка модели: «Rotate session tokens for coupons».",
+    "scores": {
+      "complexity": {
+        "score": 3,
+        "reason": "Заглушка: изменено 59 строк в 3 показанных файлах.",
+        "evidence": [
+          {
+            "path": "src/auth/coupons.py",
+            "lines": "178-186"
+          }
+        ]
+      },
+      "quality": {
+        "score": 5,
+        "reason": "Заглушка: тесты есть, CI: success.",
+        "evidence": [
+          {
+            "path": "src/auth/session.py",
+            "lines": "15-23"
+          }
+        ]
+      },
+      "risk": {
+        "score": 3,
+        "reason": "Заглушка: затронуты миграции, авторизация или блокировки.",
+        "evidence": [
+          {
+            "path": "tests/test_auth_coupons.py",
+            "lines": "154-162"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 4,
+        "reason": "Заглушка: в описании 46 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 139,
+    "summary": "Заглушка модели: «Archive closed orders rows».",
+    "scores": {
+      "complexity": {
+        "score": 3,
+        "reason": "Заглушка: изменено 91 строк в 2 показанных файлах.",
+        "evidence": [
+          {
+            "path": "migrations/0016_orders.sql",
+            "lines": "160-168"
+          }
+        ]
+      },
+      "quality": {
+        "score": 2,
+        "reason": "Заглушка: тесты не найдены, CI: unknown.",
+        "evidence": [
+          {
+            "path": "src/models/orders.py",
+            "lines": "141-149"
+          }
+        ]
+      },
+      "risk": {
+        "score": 5,
+        "reason": "Заглушка: затронуты миграции, авторизация или блокировки.",
+        "evidence": [
+          {
+            "path": "migrations/0016_orders.sql",
+            "lines": "160-168"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 4,
+        "reason": "Заглушка: в описании 45 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 187,
+    "summary": "Заглушка модели: «Add a sale discount».",
+    "scores": {
+      "complexity": {
+        "score": 3,
+        "reason": "Заглушка: изменено 85 строк в 5 показанных файлах.",
+        "evidence": [
+          {
+            "path": "src/pricing_sale.py",
+            "lines": "40-44"
+          },
+          {
+            "path": "src/pricing.py",
+            "lines": ""
+          }
+        ]
+      },
+      "quality": {
+        "score": 5,
+        "reason": "Заглушка: тесты есть, CI: success.",
+        "evidence": [
+          {
+            "path": "docs/authors/alina.md",
+            "lines": "1"
+          }
+        ]
+      },
+      "risk": {
+        "score": 4,
+        "reason": "Заглушка: затронуты миграции, авторизация или блокировки.",
+        "evidence": [
+          {
+            "path": "src/pricing.py",
+            "lines": "126-134"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 2,
+        "reason": "Заглушка: в описании 8 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 138,
+    "summary": "Заглушка модели: «Document the coupons settings».",
+    "scores": {
+      "complexity": {
+        "score": 1,
+        "reason": "Заглушка: изменено 11 строк в 1 показанных файлах.",
+        "evidence": [
+          {
+            "path": "docs/coupons.md",
+            "lines": "52-60"
+          }
+        ]
+      },
+      "quality": {
+        "score": 4,
+        "reason": "Заглушка: тесты не найдены, CI: success.",
+        "evidence": [
+          {
+            "path": "docs/coupons.md",
+            "lines": "52-60"
+          }
+        ]
+      },
+      "risk": {
+        "score": 1,
+        "reason": "Заглушка: опасных мест по путям и коду не видно.",
+        "evidence": [
+          {
+            "path": "docs/coupons.md",
+            "lines": "52-60"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 4,
+        "reason": "Заглушка: в описании 45 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 137,
+    "summary": "Заглушка модели: «Simplify pricing loading».",
+    "scores": {
+      "complexity": {
+        "score": 3,
+        "reason": "Заглушка: изменено 63 строк в 2 показанных файлах.",
+        "evidence": [
+          {
+            "path": "tests/test_pricing.py",
+            "lines": "40-48"
+          }
+        ]
+      },
+      "quality": {
+        "score": 4,
+        "reason": "Заглушка: тесты есть, CI: success.",
+        "evidence": [
+          {
+            "path": "src/pricing.py",
+            "lines": "44-52"
+          }
+        ]
+      },
+      "risk": {
+        "score": 1,
+        "reason": "Заглушка: опасных мест по путям и коду не видно.",
+        "evidence": [
+          {
+            "path": "tests/test_pricing.py",
+            "lines": "40-48"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 1,
+        "reason": "Заглушка: в описании 1 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 136,
+    "summary": "Заглушка модели: «Simplify orders loading».",
+    "scores": {
+      "complexity": {
+        "score": 3,
+        "reason": "Заглушка: изменено 64 строк в 2 показанных файлах.",
+        "evidence": [
+          {
+            "path": "tests/test_orders.py",
+            "lines": "63-71"
+          }
+        ]
+      },
+      "quality": {
+        "score": 4,
+        "reason": "Заглушка: тесты есть, CI: success.",
+        "evidence": [
+          {
+            "path": "src/orders.py",
+            "lines": "43-51"
+          }
+        ]
+      },
+      "risk": {
+        "score": 1,
+        "reason": "Заглушка: опасных мест по путям и коду не видно.",
+        "evidence": [
+          {
+            "path": "tests/test_orders.py",
+            "lines": "63-71"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 2,
+        "reason": "Заглушка: в описании 3 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 135,
+    "summary": "Заглушка модели: «Archive closed cart rows».",
+    "scores": {
+      "complexity": {
+        "score": 3,
+        "reason": "Заглушка: изменено 93 строк в 2 показанных файлах.",
+        "evidence": [
+          {
+            "path": "migrations/0063_cart.sql",
+            "lines": "80-88"
+          }
+        ]
+      },
+      "quality": {
+        "score": 4,
+        "reason": "Заглушка: тесты не найдены, CI: success.",
+        "evidence": [
+          {
+            "path": "src/models/cart.py",
+            "lines": "18-26"
+          }
+        ]
+      },
+      "risk": {
+        "score": 5,
+        "reason": "Заглушка: затронуты миграции, авторизация или блокировки.",
+        "evidence": [
+          {
+            "path": "migrations/0063_cart.sql",
+            "lines": "80-88"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 1,
+        "reason": "Заглушка: в описании 0 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 134,
+    "summary": "Заглушка модели: «Make the coupons queue thread-safe».",
+    "scores": {
+      "complexity": {
+        "score": 3,
+        "reason": "Заглушка: изменено 62 строк в 2 показанных файлах.",
+        "evidence": [
+          {
+            "path": "src/worker/locks.py",
+            "lines": "44-52"
+          }
+        ]
+      },
+      "quality": {
+        "score": 3,
+        "reason": "Заглушка: тесты не найдены, CI: mixed.",
+        "evidence": [
+          {
+            "path": "src/worker/coupons_queue.py",
+            "lines": "108-116"
+          }
+        ]
+      },
+      "risk": {
+        "score": 4,
+        "reason": "Заглушка: затронуты миграции, авторизация или блокировки.",
+        "evidence": [
+          {
+            "path": "src/worker/locks.py",
+            "lines": "44-52"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 4,
+        "reason": "Заглушка: в описании 46 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 133,
+    "summary": "Заглушка модели: «Make the refunds queue thread-safe».",
+    "scores": {
+      "complexity": {
+        "score": 3,
+        "reason": "Заглушка: изменено 113 строк в 2 показанных файлах.",
+        "evidence": [
+          {
+            "path": "src/worker/locks.py",
+            "lines": "169-177"
+          }
+        ]
+      },
+      "quality": {
+        "score": 4,
+        "reason": "Заглушка: тесты не найдены, CI: success.",
+        "evidence": [
+          {
+            "path": "src/worker/refunds_queue.py",
+            "lines": "140-148"
+          }
+        ]
+      },
+      "risk": {
+        "score": 5,
+        "reason": "Заглушка: затронуты миграции, авторизация или блокировки.",
+        "evidence": [
+          {
+            "path": "src/worker/locks.py",
+            "lines": "169-177"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 4,
+        "reason": "Заглушка: в описании 46 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 132,
+    "summary": "Заглушка модели: «Document the cart settings».",
+    "scores": {
+      "complexity": {
+        "score": 2,
+        "reason": "Заглушка: изменено 16 строк в 1 показанных файлах.",
+        "evidence": [
+          {
+            "path": "docs/cart.md",
+            "lines": "85-93"
+          }
+        ]
+      },
+      "quality": {
+        "score": 4,
+        "reason": "Заглушка: тесты не найдены, CI: success.",
+        "evidence": [
+          {
+            "path": "docs/cart.md",
+            "lines": "85-93"
+          }
+        ]
+      },
+      "risk": {
+        "score": 1,
+        "reason": "Заглушка: опасных мест по путям и коду не видно.",
+        "evidence": [
+          {
+            "path": "docs/cart.md",
+            "lines": "85-93"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 4,
+        "reason": "Заглушка: в описании 45 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 131,
+    "summary": "Заглушка модели: «Document the stock settings».",
+    "scores": {
+      "complexity": {
+        "score": 1,
+        "reason": "Заглушка: изменено 10 строк в 1 показанных файлах.",
+        "evidence": [
+          {
+            "path": "docs/stock.md",
+            "lines": "87-95"
+          }
+        ]
+      },
+      "quality": {
+        "score": 3,
+        "reason": "Заглушка: тесты не найдены, CI: mixed.",
+        "evidence": [
+          {
+            "path": "docs/stock.md",
+            "lines": "87-95"
+          }
+        ]
+      },
+      "risk": {
+        "score": 1,
+        "reason": "Заглушка: опасных мест по путям и коду не видно.",
+        "evidence": [
+          {
+            "path": "docs/stock.md",
+            "lines": "87-95"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 2,
+        "reason": "Заглушка: в описании 3 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 130,
+    "summary": "Заглушка модели: «Simplify refunds loading».",
+    "scores": {
+      "complexity": {
+        "score": 3,
+        "reason": "Заглушка: изменено 61 строк в 2 показанных файлах.",
+        "evidence": [
+          {
+            "path": "tests/test_refunds.py",
+            "lines": "99-107"
+          }
+        ]
+      },
+      "quality": {
+        "score": 4,
+        "reason": "Заглушка: тесты есть, CI: success.",
+        "evidence": [
+          {
+            "path": "src/refunds.py",
+            "lines": "95-103"
+          }
+        ]
+      },
+      "risk": {
+        "score": 1,
+        "reason": "Заглушка: опасных мест по путям и коду не видно.",
+        "evidence": [
+          {
+            "path": "tests/test_refunds.py",
+            "lines": "99-107"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 4,
+        "reason": "Заглушка: в описании 44 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 129,
+    "summary": "Заглушка модели: «Tune catalog timeouts».",
+    "scores": {
+      "complexity": {
+        "score": 2,
+        "reason": "Заглушка: изменено 17 строк в 1 показанных файлах.",
+        "evidence": [
+          {
+            "path": "config/catalog.yaml",
+            "lines": "73-81"
+          }
+        ]
+      },
+      "quality": {
+        "score": 4,
+        "reason": "Заглушка: тесты не найдены, CI: success.",
+        "evidence": [
+          {
+            "path": "config/catalog.yaml",
+            "lines": "73-81"
+          }
+        ]
+      },
+      "risk": {
+        "score": 1,
+        "reason": "Заглушка: опасных мест по путям и коду не видно.",
+        "evidence": [
+          {
+            "path": "config/catalog.yaml",
+            "lines": "73-81"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 2,
+        "reason": "Заглушка: в описании 3 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 128,
+    "summary": "Заглушка модели: «Tune orders timeouts».",
+    "scores": {
+      "complexity": {
+        "score": 1,
+        "reason": "Заглушка: изменено 4 строк в 1 показанных файлах.",
+        "evidence": [
+          {
+            "path": "config/orders.yaml",
+            "lines": "153-157"
+          }
+        ]
+      },
+      "quality": {
+        "score": 4,
+        "reason": "Заглушка: тесты не найдены, CI: success.",
+        "evidence": [
+          {
+            "path": "config/orders.yaml",
+            "lines": "153-157"
+          }
+        ]
+      },
+      "risk": {
+        "score": 1,
+        "reason": "Заглушка: опасных мест по путям и коду не видно.",
+        "evidence": [
+          {
+            "path": "config/orders.yaml",
+            "lines": "153-157"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 4,
+        "reason": "Заглушка: в описании 44 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 127,
+    "summary": "Заглушка модели: «Simplify pricing loading».",
+    "scores": {
+      "complexity": {
+        "score": 1,
+        "reason": "Заглушка: изменено 12 строк в 2 показанных файлах.",
+        "evidence": [
+          {
+            "path": "src/pricing.py",
+            "lines": "114-120"
+          }
+        ]
+      },
+      "quality": {
+        "score": 5,
+        "reason": "Заглушка: тесты есть, CI: success.",
+        "evidence": [
+          {
+            "path": "tests/test_pricing.py",
+            "lines": "7-13"
+          }
+        ]
+      },
+      "risk": {
+        "score": 1,
+        "reason": "Заглушка: опасных мест по путям и коду не видно.",
+        "evidence": [
+          {
+            "path": "src/pricing.py",
+            "lines": "114-120"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 4,
+        "reason": "Заглушка: в описании 44 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 126,
+    "summary": "Заглушка модели: «Tune coupons timeouts».",
+    "scores": {
+      "complexity": {
+        "score": 1,
+        "reason": "Заглушка: изменено 12 строк в 1 показанных файлах.",
+        "evidence": [
+          {
+            "path": "config/coupons.yaml",
+            "lines": "39-47"
+          }
+        ]
+      },
+      "quality": {
+        "score": 3,
+        "reason": "Заглушка: тесты не найдены, CI: success.",
+        "evidence": [
+          {
+            "path": "config/coupons.yaml",
+            "lines": "39-47"
+          }
+        ]
+      },
+      "risk": {
+        "score": 1,
+        "reason": "Заглушка: опасных мест по путям и коду не видно.",
+        "evidence": [
+          {
+            "path": "config/coupons.yaml",
+            "lines": "39-47"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 1,
+        "reason": "Заглушка: в описании 0 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 125,
+    "summary": "Заглушка модели: «Add bulk actions to orders».",
+    "scores": {
+      "complexity": {
+        "score": 3,
+        "reason": "Заглушка: изменено 118 строк в 3 показанных файлах.",
+        "evidence": [
+          {
+            "path": "src/orders_service.py",
+            "lines": "72-80"
+          }
+        ]
+      },
+      "quality": {
+        "score": 5,
+        "reason": "Заглушка: тесты есть, CI: success.",
+        "evidence": [
+          {
+            "path": "tests/test_orders.py",
+            "lines": "21-29"
+          }
+        ]
+      },
+      "risk": {
+        "score": 2,
+        "reason": "Заглушка: опасных мест по путям и коду не видно.",
+        "evidence": [
+          {
+            "path": "src/orders.py",
+            "lines": "93-101"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 4,
+        "reason": "Заглушка: в описании 46 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 124,
+    "summary": "Заглушка модели: «Make the stock queue thread-safe».",
+    "scores": {
+      "complexity": {
+        "score": 4,
+        "reason": "Заглушка: изменено 135 строк в 2 показанных файлах.",
+        "evidence": [
+          {
+            "path": "src/worker/stock_queue.py",
+            "lines": "21-29"
+          }
+        ]
+      },
+      "quality": {
+        "score": 3,
+        "reason": "Заглушка: тесты не найдены, CI: mixed.",
+        "evidence": [
+          {
+            "path": "src/worker/locks.py",
+            "lines": "42-50"
+          }
+        ]
+      },
+      "risk": {
+        "score": 5,
+        "reason": "Заглушка: затронуты миграции, авторизация или блокировки.",
+        "evidence": [
+          {
+            "path": "src/worker/stock_queue.py",
+            "lines": "21-29"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 4,
+        "reason": "Заглушка: в описании 46 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 123,
+    "summary": "Заглушка модели: «Document the shipping settings».",
+    "scores": {
+      "complexity": {
+        "score": 1,
+        "reason": "Заглушка: изменено 11 строк в 1 показанных файлах.",
+        "evidence": [
+          {
+            "path": "docs/shipping.md",
+            "lines": "159-167"
+          }
+        ]
+      },
+      "quality": {
+        "score": 4,
+        "reason": "Заглушка: тесты не найдены, CI: success.",
+        "evidence": [
+          {
+            "path": "docs/shipping.md",
+            "lines": "159-167"
+          }
+        ]
+      },
+      "risk": {
+        "score": 1,
+        "reason": "Заглушка: опасных мест по путям и коду не видно.",
+        "evidence": [
+          {
+            "path": "docs/shipping.md",
+            "lines": "159-167"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 1,
+        "reason": "Заглушка: в описании 1 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 172,
+    "summary": "Заглушка модели: «Hotfix rotate session tokens for shipping».",
+    "scores": {
+      "complexity": {
+        "score": 1,
+        "reason": "Заглушка: изменено 12 строк в 2 показанных файлах.",
+        "evidence": [
+          {
+            "path": "tests/test_cart.py",
+            "lines": "6-12"
+          }
+        ]
+      },
+      "quality": {
+        "score": 5,
+        "reason": "Заглушка: тесты есть, CI: success.",
+        "evidence": [
+          {
+            "path": "src/cart.py",
+            "lines": "5-11"
+          }
+        ]
+      },
+      "risk": {
+        "score": 1,
+        "reason": "Заглушка: опасных мест по путям и коду не видно.",
+        "evidence": [
+          {
+            "path": "tests/test_cart.py",
+            "lines": "6-12"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 3,
+        "reason": "Заглушка: в описании 10 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 122,
+    "summary": "Заглушка модели: «Tune shipping timeouts».",
+    "scores": {
+      "complexity": {
+        "score": 1,
+        "reason": "Заглушка: изменено 11 строк в 1 показанных файлах.",
+        "evidence": [
+          {
+            "path": "config/shipping.yaml",
+            "lines": "51-59"
+          }
+        ]
+      },
+      "quality": {
+        "score": 3,
+        "reason": "Заглушка: тесты не найдены, CI: mixed.",
+        "evidence": [
+          {
+            "path": "config/shipping.yaml",
+            "lines": "51-59"
+          }
+        ]
+      },
+      "risk": {
+        "score": 1,
+        "reason": "Заглушка: опасных мест по путям и коду не видно.",
+        "evidence": [
+          {
+            "path": "config/shipping.yaml",
+            "lines": "51-59"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 4,
+        "reason": "Заглушка: в описании 44 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 121,
+    "summary": "Заглушка модели: «Simplify shipping loading».",
+    "scores": {
+      "complexity": {
+        "score": 3,
+        "reason": "Заглушка: изменено 76 строк в 2 показанных файлах.",
+        "evidence": [
+          {
+            "path": "tests/test_shipping.py",
+            "lines": "122-130"
+          }
+        ]
+      },
+      "quality": {
+        "score": 5,
+        "reason": "Заглушка: тесты есть, CI: success.",
+        "evidence": [
+          {
+            "path": "src/shipping.py",
+            "lines": "82-90"
+          }
+        ]
+      },
+      "risk": {
+        "score": 1,
+        "reason": "Заглушка: опасных мест по путям и коду не видно.",
+        "evidence": [
+          {
+            "path": "tests/test_shipping.py",
+            "lines": "122-130"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 4,
+        "reason": "Заглушка: в описании 44 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 120,
+    "summary": "Заглушка модели: «Rotate session tokens for shipping».",
+    "scores": {
+      "complexity": {
+        "score": 3,
+        "reason": "Заглушка: изменено 72 строк в 3 показанных файлах.",
+        "evidence": [
+          {
+            "path": "src/auth/session.py",
+            "lines": "108-116"
+          },
+          {
+            "path": "src/auth/shipping.py",
+            "lines": ""
+          }
+        ]
+      },
+      "quality": {
+        "score": 5,
+        "reason": "Заглушка: тесты есть, CI: success.",
+        "evidence": [
+          {
+            "path": "tests/test_auth_shipping.py",
+            "lines": "68-76"
+          }
+        ]
+      },
+      "risk": {
+        "score": 3,
+        "reason": "Заглушка: затронуты миграции, авторизация или блокировки.",
+        "evidence": [
+          {
+            "path": "src/auth/shipping.py",
+            "lines": "10-18"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 4,
+        "reason": "Заглушка: в описании 46 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 119,
+    "summary": "Заглушка модели: «Document the checkout settings».",
+    "scores": {
+      "complexity": {
+        "score": 1,
+        "reason": "Заглушка: изменено 15 строк в 1 показанных файлах.",
+        "evidence": [
+          {
+            "path": "docs/checkout.md",
+            "lines": "39-47"
+          }
+        ]
+      },
+      "quality": {
+        "score": 2,
+        "reason": "Заглушка: тесты не найдены, CI: mixed.",
+        "evidence": [
+          {
+            "path": "docs/checkout.md",
+            "lines": "39-47"
+          }
+        ]
+      },
+      "risk": {
+        "score": 1,
+        "reason": "Заглушка: опасных мест по путям и коду не видно.",
+        "evidence": [
+          {
+            "path": "docs/checkout.md",
+            "lines": "39-47"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 4,
+        "reason": "Заглушка: в описании 45 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 118,
+    "summary": "Заглушка модели: «Rotate session tokens for search».",
+    "scores": {
+      "complexity": {
+        "score": 3,
+        "reason": "Заглушка: изменено 62 строк в 3 показанных файлах.",
+        "evidence": [
+          {
+            "path": "tests/test_auth_search.py",
+            "lines": "118-126"
+          }
+        ]
+      },
+      "quality": {
+        "score": 4,
+        "reason": "Заглушка: тесты есть, CI: success.",
+        "evidence": [
+          {
+            "path": "src/auth/search.py",
+            "lines": "178-186"
+          }
+        ]
+      },
+      "risk": {
+        "score": 3,
+        "reason": "Заглушка: затронуты миграции, авторизация или блокировки.",
+        "evidence": [
+          {
+            "path": "src/auth/session.py",
+            "lines": "11-19"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 4,
+        "reason": "Заглушка: в описании 46 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 117,
+    "summary": "Заглушка модели: «Document the cart settings».",
+    "scores": {
+      "complexity": {
+        "score": 1,
+        "reason": "Заглушка: изменено 4 строк в 1 показанных файлах.",
+        "evidence": [
+          {
+            "path": "docs/cart.md",
+            "lines": "55-59"
+          }
+        ]
+      },
+      "quality": {
+        "score": 3,
+        "reason": "Заглушка: тесты не найдены, CI: success.",
+        "evidence": [
+          {
+            "path": "docs/cart.md",
+            "lines": "55-59"
+          }
+        ]
+      },
+      "risk": {
+        "score": 1,
+        "reason": "Заглушка: опасных мест по путям и коду не видно.",
+        "evidence": [
+          {
+            "path": "docs/cart.md",
+            "lines": "55-59"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 4,
+        "reason": "Заглушка: в описании 45 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 116,
+    "summary": "Заглушка модели: «Make the orders queue thread-safe».",
+    "scores": {
+      "complexity": {
+        "score": 3,
+        "reason": "Заглушка: изменено 92 строк в 2 показанных файлах.",
+        "evidence": [
+          {
+            "path": "src/worker/orders_queue.py",
+            "lines": "76-84"
+          }
+        ]
+      },
+      "quality": {
+        "score": 3,
+        "reason": "Заглушка: тесты не найдены, CI: success.",
+        "evidence": [
+          {
+            "path": "src/worker/locks.py",
+            "lines": "97-105"
+          }
+        ]
+      },
+      "risk": {
+        "score": 5,
+        "reason": "Заглушка: затронуты миграции, авторизация или блокировки.",
+        "evidence": [
+          {
+            "path": "src/worker/orders_queue.py",
+            "lines": "76-84"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 4,
+        "reason": "Заглушка: в описании 46 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 115,
+    "summary": "Заглушка модели: «Simplify profile loading».",
+    "scores": {
+      "complexity": {
+        "score": 2,
+        "reason": "Заглушка: изменено 30 строк в 2 показанных файлах.",
+        "evidence": [
+          {
+            "path": "src/profile.py",
+            "lines": "156-164"
+          }
+        ]
+      },
+      "quality": {
+        "score": 4,
+        "reason": "Заглушка: тесты есть, CI: success.",
+        "evidence": [
+          {
+            "path": "tests/test_profile.py",
+            "lines": "42-50"
+          }
+        ]
+      },
+      "risk": {
+        "score": 1,
+        "reason": "Заглушка: опасных мест по путям и коду не видно.",
+        "evidence": [
+          {
+            "path": "src/profile.py",
+            "lines": "156-164"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 4,
+        "reason": "Заглушка: в описании 44 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 114,
+    "summary": "Заглушка модели: «Document the stock settings».",
+    "scores": {
+      "complexity": {
+        "score": 2,
+        "reason": "Заглушка: изменено 18 строк в 1 показанных файлах.",
+        "evidence": [
+          {
+            "path": "docs/stock.md",
+            "lines": "122-130"
+          }
+        ]
+      },
+      "quality": {
+        "score": 4,
+        "reason": "Заглушка: тесты не найдены, CI: success.",
+        "evidence": [
+          {
+            "path": "docs/stock.md",
+            "lines": "122-130"
+          }
+        ]
+      },
+      "risk": {
+        "score": 1,
+        "reason": "Заглушка: опасных мест по путям и коду не видно.",
+        "evidence": [
+          {
+            "path": "docs/stock.md",
+            "lines": "122-130"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 4,
+        "reason": "Заглушка: в описании 45 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 171,
+    "summary": "Заглушка модели: «Hotfix make the profile queue thread-safe».",
+    "scores": {
+      "complexity": {
+        "score": 1,
+        "reason": "Заглушка: изменено 12 строк в 2 показанных файлах.",
+        "evidence": [
+          {
+            "path": "src/cart.py",
+            "lines": "147-153"
+          }
+        ]
+      },
+      "quality": {
+        "score": 5,
+        "reason": "Заглушка: тесты есть, CI: success.",
+        "evidence": [
+          {
+            "path": "tests/test_cart.py",
+            "lines": "15-21"
+          }
+        ]
+      },
+      "risk": {
+        "score": 1,
+        "reason": "Заглушка: опасных мест по путям и коду не видно.",
+        "evidence": [
+          {
+            "path": "src/cart.py",
+            "lines": "147-153"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 3,
+        "reason": "Заглушка: в описании 10 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 113,
+    "summary": "Заглушка модели: «Add bulk actions to shipping».",
+    "scores": {
+      "complexity": {
+        "score": 4,
+        "reason": "Заглушка: изменено 123 строк в 3 показанных файлах.",
+        "evidence": [
+          {
+            "path": "tests/test_shipping.py",
+            "lines": "19-27"
+          }
+        ]
+      },
+      "quality": {
+        "score": 3,
+        "reason": "Заглушка: тесты есть, CI: failure.",
+        "evidence": [
+          {
+            "path": "src/shipping.py",
+            "lines": "143-151"
+          }
+        ]
+      },
+      "risk": {
+        "score": 2,
+        "reason": "Заглушка: опасных мест по путям и коду не видно.",
+        "evidence": [
+          {
+            "path": "src/shipping_service.py",
+            "lines": "127-135"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 4,
+        "reason": "Заглушка: в описании 46 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 112,
+    "summary": "Заглушка модели: «Simplify catalog loading».",
+    "scores": {
+      "complexity": {
+        "score": 3,
+        "reason": "Заглушка: изменено 69 строк в 2 показанных файлах.",
+        "evidence": [
+          {
+            "path": "tests/test_catalog.py",
+            "lines": "123-131"
+          }
+        ]
+      },
+      "quality": {
+        "score": 4,
+        "reason": "Заглушка: тесты есть, CI: success.",
+        "evidence": [
+          {
+            "path": "src/catalog.py",
+            "lines": "64-72"
+          }
+        ]
+      },
+      "risk": {
+        "score": 1,
+        "reason": "Заглушка: опасных мест по путям и коду не видно.",
+        "evidence": [
+          {
+            "path": "tests/test_catalog.py",
+            "lines": "123-131"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 4,
+        "reason": "Заглушка: в описании 44 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 111,
+    "summary": "Заглушка модели: «Make the profile queue thread-safe».",
+    "scores": {
+      "complexity": {
+        "score": 3,
+        "reason": "Заглушка: изменено 53 строк в 2 показанных файлах.",
+        "evidence": [
+          {
+            "path": "src/worker/profile_queue.py",
+            "lines": "11-19"
+          }
+        ]
+      },
+      "quality": {
+        "score": 4,
+        "reason": "Заглушка: тесты не найдены, CI: success.",
+        "evidence": [
+          {
+            "path": "src/worker/locks.py",
+            "lines": "13-21"
+          }
+        ]
+      },
+      "risk": {
+        "score": 4,
+        "reason": "Заглушка: затронуты миграции, авторизация или блокировки.",
+        "evidence": [
+          {
+            "path": "src/worker/profile_queue.py",
+            "lines": "11-19"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 4,
+        "reason": "Заглушка: в описании 46 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 110,
+    "summary": "Заглушка модели: «Tune orders timeouts».",
+    "scores": {
+      "complexity": {
+        "score": 1,
+        "reason": "Заглушка: изменено 7 строк в 1 показанных файлах.",
+        "evidence": [
+          {
+            "path": "config/orders.yaml",
+            "lines": "26-33"
+          }
+        ]
+      },
+      "quality": {
+        "score": 2,
+        "reason": "Заглушка: тесты не найдены, CI: mixed.",
+        "evidence": [
+          {
+            "path": "config/orders.yaml",
+            "lines": "26-33"
+          }
+        ]
+      },
+      "risk": {
+        "score": 1,
+        "reason": "Заглушка: опасных мест по путям и коду не видно.",
+        "evidence": [
+          {
+            "path": "config/orders.yaml",
+            "lines": "26-33"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 4,
+        "reason": "Заглушка: в описании 44 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 170,
+    "summary": "Заглушка модели: «Hotfix make the stock queue thread-safe».",
+    "scores": {
+      "complexity": {
+        "score": 1,
+        "reason": "Заглушка: изменено 12 строк в 2 показанных файлах.",
+        "evidence": [
+          {
+            "path": "src/cart.py",
+            "lines": "71-77"
+          }
+        ]
+      },
+      "quality": {
+        "score": 5,
+        "reason": "Заглушка: тесты есть, CI: success.",
+        "evidence": [
+          {
+            "path": "tests/test_cart.py",
+            "lines": "122-128"
+          }
+        ]
+      },
+      "risk": {
+        "score": 1,
+        "reason": "Заглушка: опасных мест по путям и коду не видно.",
+        "evidence": [
+          {
+            "path": "src/cart.py",
+            "lines": "71-77"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 3,
+        "reason": "Заглушка: в описании 10 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 109,
+    "summary": "Заглушка модели: «Document the checkout settings».",
+    "scores": {
+      "complexity": {
+        "score": 1,
+        "reason": "Заглушка: изменено 5 строк в 1 показанных файлах.",
+        "evidence": [
+          {
+            "path": "docs/checkout.md",
+            "lines": "71-76"
+          }
+        ]
+      },
+      "quality": {
+        "score": 3,
+        "reason": "Заглушка: тесты не найдены, CI: success.",
+        "evidence": [
+          {
+            "path": "docs/checkout.md",
+            "lines": "71-76"
+          }
+        ]
+      },
+      "risk": {
+        "score": 1,
+        "reason": "Заглушка: опасных мест по путям и коду не видно.",
+        "evidence": [
+          {
+            "path": "docs/checkout.md",
+            "lines": "71-76"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 1,
+        "reason": "Заглушка: в описании 0 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  },
+  {
+    "number": 108,
+    "summary": "Заглушка модели: «Simplify cart loading».",
+    "scores": {
+      "complexity": {
+        "score": 3,
+        "reason": "Заглушка: изменено 74 строк в 2 показанных файлах.",
+        "evidence": [
+          {
+            "path": "src/cart.py",
+            "lines": "78-86"
+          }
+        ]
+      },
+      "quality": {
+        "score": 4,
+        "reason": "Заглушка: тесты есть, CI: success.",
+        "evidence": [
+          {
+            "path": "tests/test_cart.py",
+            "lines": "13-21"
+          }
+        ]
+      },
+      "risk": {
+        "score": 1,
+        "reason": "Заглушка: опасных мест по путям и коду не видно.",
+        "evidence": [
+          {
+            "path": "src/cart.py",
+            "lines": "78-86"
+          }
+        ]
+      },
+      "clarity": {
+        "score": 1,
+        "reason": "Заглушка: в описании 1 слов.",
+        "evidence": []
+      }
+    },
+    "runs": 3,
+    "unstable": false
+  }
+]
